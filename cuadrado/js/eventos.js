@@ -6,25 +6,34 @@ function llavesR(){
 	return llaves
 }
 
-llaves = llavesR()
-
+var llaves = llavesR()
+function teleport(panel){
+		console.log(panel.id)
+		cuadrado.style.top = panel.style.top;
+		cuadrado.style.left = panel.style.left;
+}
 function comer(fruta){
-	llaves -= 1;
-	document.getElementById("puntaje").innerHTML = "llaves restantes: " + llaves;
+	//frutas -= 1;
+	//document.getElementById("puntaje").innerHTML = "frutas restantes: " + fruta;
 	fruta.className = "p0"
 	console.log("comiste");
 }
+function recolectar(llave){
+	llaves += 1;
+	document.getElementById("puntaje").innerHTML = "llaves : " + llaves;
+	llave.className = "p0"
+	console.log("conseguiste llave");
+}
 function morir(obstaculo){
-	x = 350;
-	y = 150;
+	x = 450;
+	y = 50;
 	cuadrado.style.top = y+"px";
 	cuadrado.style.left = x+"px";
 	document.getElementById("escenario").innerHTML = ""
 	generarEscenario()
-	llaves = llavesR()
-	document.getElementById("puntaje").innerHTML = "llaves restantes: " + llaves;
+	llaves = 0
+	document.getElementById("puntaje").innerHTML = "llaves: " + llaves;
 }
-function ganar(){ alert("ganaste"); }
 function colision(tecla){ 
 	switch (tecla){
 		case "ArrowUp":
@@ -54,3 +63,15 @@ function colision(tecla){
 	}
 	console.log("estas en una pared"); 
 }
+function abrir(puerta, tecla){
+		if(llaves>0){
+			llaves--;
+			puerta.style.top = (y+1)+"px"
+			puerta.style.backgroundImage = "url('img/puerta2a.png')";
+			document.getElementById("puntaje").innerHTML = "llaves: " + llaves;
+			var abierto = -abierto
+		}else{
+			colision(tecla)
+		}
+}
+function ganar(){ alert("ganaste"); }
