@@ -8,7 +8,7 @@ function llavesR(){
 
 var llaves = llavesR()
 function teleport(panel){
-		console.log(panel.id)
+		console.log(panel.id);
 		cuadrado.style.top = panel.style.top;
 		cuadrado.style.left = panel.style.left;
 }
@@ -60,8 +60,7 @@ function colision(tecla){
 			cuadrado.style.left = x + "px"
 			cuadrado.style.backgroundImage = "url('img/conejoD.png')"
 			break;
-	}
-	console.log("estas en una pared"); 
+	} 
 }
 function abrir(puerta, tecla){
 		if(llaves>0){
