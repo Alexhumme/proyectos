@@ -20,7 +20,7 @@ function generarEscenario(){
 		xb = 0
 		for (let o=0; o < escenario[i].length; o++){
 			if (escenario[i][o] == "PA"|| escenario[i][o] == "PB"){
-				document.getElementById("escenario").innerHTML += "<div id='"+escenario[i][o]+"' style='top: "+yb+"px;left: "+xb+"px;'> </div>"
+				document.getElementById("escenario").innerHTML += "<div id='"+escenario[i][o]+"' class='panel' style='top: "+yb+"px;left: "+xb+"px;'> </div>"
 				xb += 50
 			}else{
 				document.getElementById("escenario").innerHTML += "<div class='"+escenario[i][o]+" panel' style='top: "+yb+"px;left: "+xb+"px;'> </div>"

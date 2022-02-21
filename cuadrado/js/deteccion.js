@@ -4,10 +4,10 @@ function activarEventos(key){
 	for (let i = 0; i < paneles.length; i++){
 		if (cuadrado.style.top == paneles[i].style.top & cuadrado.style.left == paneles[i].style.left){
 			switch (paneles[i].id) {
-				case "PA": 
-					teleport(paneles[i]); break;
-				case "PB": 
-					teleport(paneles[i]); break;
+				case "PA":
+					teleport(document.getElementById("PB")); break;
+				case "PB":
+					teleport(document.getElementById("PA")); break;
 				default: console.log("hm");
 			}
 			switch (paneles[i].className) {
