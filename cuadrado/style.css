@@ -1,52 +1,64 @@
 h1 {
+	padding: 10px;
 	margin: auto;
 	position: relative;
 	font-family: Impact, fantasy;
-	top: 600px;
-	left: 0px;
 }
 h3{
 	margin: auto;
 	position: relative;
 	font-family: Impact, fantasy;
-	top: 10px;
+	top: 0px;
 	left: 0px;
 }
 body {
 	background-color: cyan;
-	display: flex;
+	display: grid;
+	grid-template-columns: 550px, 110px;
 	align-content: center;
 	background-image: url("img/fondo.png");
 }
 button {
 	font-family: Impact, fantasy;
-	width: 30px;
-	height: 30px;
+	width: 100px;
+	height: 100px;
 	position: relative;
 	font-weight: bolder;
+	border-radius: 15px;
 }
 .B_arriba {
-	top: 0px;
-	left: 39px;
+	top: -25px;
+	left: 75px;
+	transform: rotate(90deg);
 }
 .B_abajo {
-	top: 70px;
-	left: 17px;
+	top: 125px;
+	left: 25px;
+	transform: rotate(270deg);
 }
 .B_derecha {
-	top: 35px;
+	top: 50px;
 	left: 0px;
 }
 .B_izquierda {
-	top: 35px;
-	left: -50px;
+	top: 50px;
+	left: -100px;
 }
 .mando {
-	background-color: lightgoldenrodyellow;
-	width: 100px;
-	height: 100px;
+	background-color:white;
+	width: 200px;
+	height: 200px;
 	display: flex;
 	border-radius: 45px;
+}
+#menu {
+	background-color: cornsilk;
+	position: relative;
+	top: -8px;
+	margin-left: 542px;
+	width: 200px;
+	height: 550px;
+	display: grid;
 }
 #cuadradoRojo {
 	width: 50px;
