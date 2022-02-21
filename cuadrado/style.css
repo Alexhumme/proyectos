@@ -16,6 +16,37 @@ body {
 	background-color: cyan;
 	display: flex;
 	align-content: center;
+	background-image: url("img/fondo.png");
+}
+button {
+	font-family: Impact, fantasy;
+	width: 30px;
+	height: 30px;
+	position: relative;
+	font-weight: bolder;
+}
+.B_arriba {
+	top: 0px;
+	left: 39px;
+}
+.B_abajo {
+	top: 70px;
+	left: 17px;
+}
+.B_derecha {
+	top: 35px;
+	left: 0px;
+}
+.B_izquierda {
+	top: 35px;
+	left: -50px;
+}
+.mando {
+	background-color: lightgoldenrodyellow;
+	width: 100px;
+	height: 100px;
+	display: flex;
+	border-radius: 45px;
 }
 #cuadradoRojo {
 	width: 50px;
