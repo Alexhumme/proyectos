@@ -86,14 +86,26 @@ button {
 	height: 50px;
 	position: absolute;
 	margin: auto;
-	background-color: blue;
+	/*background-color: blue;*/
+	background-image: url(img/teleportB.png);
 }
 #PA{
 	width: 50px;
 	height: 50px;
 	position: absolute;
 	margin: auto;
-	background-color: yellow;
+	/*background-color: yellow;*/
+	background-image: url(img/teleportA.png);
+}
+.restart {
+	height: 25px;
+}
+.fantasma {
+	width: 25px;
+	height: 25px;
+	background-color: aqua;
+	position: absolute;
+	visibility: hidden;
 }
 .p6{
 	width: 50px;
@@ -129,6 +141,7 @@ button {
 	position: absolute;
 	width: 50px;
 	height: 50px;
+	background-image: url(img/muerte.png);
 }
 .p1{
 	background-color: green;

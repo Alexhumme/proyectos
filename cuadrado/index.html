@@ -6,7 +6,10 @@
 	</head>
 	<body>
 		<div id="escenario">  </div>
-		<div id="cuadradoRojo"></div>
+		<div id="fantasma" class="fantasma"> </div>
+		<div id="fantasmaX" class="fantasma"></div>
+		<div id="fantasmaY" class="fantasma"></div>
+		<div id="cuadradoRojo"> </div>
 		<script src="js/escenario.js"> </script>
 		<script src="js/deteccion.js"> </script>
 		<script src="js/eventos.js"> </script>
@@ -21,6 +24,7 @@
 				<button class="B_izquierda" onclick="mover('ArrowLeft'); activarEventos('ArrowLeft')"> ← </button>
 				<button class="B_derecha" onclick="mover('ArrowRight'); activarEventos('ArrowRight')"> → </button>	
 			</div>
+			<button class="restart" onclick="morir()">restart(R)</div>
 		</div>
 	</body>
 </html>
