@@ -1,29 +1,20 @@
-escenario = [
-l1 = ["p1","p1","p1","p1","p1","p1","p1","p1","p1","p1","p1"],
-l2 = ["p1","p0","P0","p0","p0","p0","p0","p0","p0","P0","p1"],
-l3 = ["p1","p0","PA","p0","p0","p0","p0","p0","p0","p0","p1"],
-l4 = ["p1","p0","p0","p0","p0","p0","p0","p0","p0","p0","p1"],
-l5 = ["p1","p0","p0","p0","p0","p0","p0","p0","p0","p0","p1"],
-l6 = ["p1","p0","p0","p0","p0","p0","p0","p0","p0","p0","p1"],
-l7 = ["p1","p0","p0","p0","p0","p0","p0","p0","p0","p0","p1"],
-l8 = ["p1","p0","p0","p0","p0","p0","p0","p1","p5","p1","p1"],
-l9 = ["p1","p0","p1","p1","p1","p0","p0","p2","PB","p2","p1"],
-l10 =["p1","p6","p1","p4","p1","p0","p0","p2","p2","p2","p1"],
-l11= ["p1","p1","p1","p1","p1","p1","p1","p1","p1","p1","p1"]
+niveles = [
+	nivel1,
+	nivel2
 ]
 
 var xb = 0
 var yb = 0
 
 function generarEscenario(){
-	for (let i=0; i < escenario.length; i++){
+	for (let i=0; i < niveles[nivel].length; i++){
 		xb = 0
-		for (let o=0; o < escenario[i].length; o++){
-			if (escenario[i][o] == "PA"|| escenario[i][o] == "PB"){
-				document.getElementById("escenario").innerHTML += "<div id='"+escenario[i][o]+"' class='panel' style='top: "+yb+"px;left: "+xb+"px;'> </div>"
+		for (let o=0; o < niveles[nivel][i].length; o++){
+			if (niveles[nivel][i][o] == "PA"|| niveles[nivel][i][o] == "PB"){
+				document.getElementById("escenario").innerHTML += "<div id='"+niveles[nivel][i][o]+"' class='panel' style='top: "+yb+"px;left: "+xb+"px;'> </div>"
 				xb += 50
 			}else{
-				document.getElementById("escenario").innerHTML += "<div class='"+escenario[i][o]+" panel' style='top: "+yb+"px;left: "+xb+"px;'> </div>"
+				document.getElementById("escenario").innerHTML += "<div class='"+niveles[nivel][i][o]+" panel' style='top: "+yb+"px;left: "+xb+"px;'> </div>"
 				xb += 50
 			}
 		}

@@ -30,11 +30,12 @@ function morir(){
 	x = 450;
 	y = 50;
 	fantasma.style.visibility = "hidden"
-	fantasmaX.style.visibility = "hidden"
-	fantasmaY.style.visibility = "hidden"
+	//fantasmaX.style.visibility = "hidden"
+	//fantasmaY.style.visibility = "hidden"
 	cuadrado.style.top = y+"px";
 	cuadrado.style.left = x+"px";
 	document.getElementById("escenario").innerHTML = ""
+	nivel = 0;
 	generarEscenario()
 	llaves = 0
 	document.getElementById("puntaje").innerHTML = "llaves: " + llaves;
@@ -90,4 +91,9 @@ function abrir(puerta, tecla){
 			colision(tecla)
 		}
 }
-function ganar(){alert("ganaste"); morir();}
+function ganar(){
+	alert("HAS GANADO"); 
+	nivel++;
+	generarEscenario();
+
+}
