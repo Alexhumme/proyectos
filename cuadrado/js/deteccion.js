@@ -8,12 +8,11 @@ function activarEventos(key){
 					teleport(document.getElementById("PB")); break;
 				case "PB":
 					teleport(document.getElementById("PA")); break;
-				default: console.log("hm");
 			}
 			switch (paneles[i].className) {
 				case "p0 panel": break;
 				case "p1 panel": colision(key); break;
-				case "p2 panel": morir(paneles[i]); break;
+				case "p2 panel": morir(); break;
 				case "p3 panel": comer(paneles[i]); break;
 				case "p4 panel": ganar(); break;
 				case "p5 panel": abrir(paneles[i], key); break;
