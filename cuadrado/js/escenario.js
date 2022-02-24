@@ -1,7 +1,4 @@
-niveles = [
-	nivel1,
-	nivel2
-]
+niveles = [nivel0,nivel1,nivel2,nivel3,nivel4]
 
 var xb = 0
 var yb = 0
