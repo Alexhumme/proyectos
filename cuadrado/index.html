@@ -5,26 +5,33 @@
 		<link rel="stylesheet" href="style.css">
 	</head>
 	<body>
-		<div id="escenario">  </div>
-		<div id="fantasma" class="fantasma"> </div>
-		<div id="fantasmaX" class="fantasma"></div>
-		<div id="fantasmaY" class="fantasma"></div>
-		<div id="cuadradoRojo"> </div>
-		<script src="js/escenario.js"> </script>
-		<script src="js/deteccion.js"> </script>
-		<script src="js/eventos.js"> </script>
-		<script src="js/iniciar.js"> </script>
-		<script src="js/mover.js"> </script>
-		<div id="menu">
-			<h1>PAGINA WEB: CUADRADO ROJO</h1>
-			<h3 id="puntaje">llaves: 0</h3>
-			<div class="mando">
-				<button class="B_arriba" onclick="mover('ArrowUp'); activarEventos('ArrowUp')"> ← </button>
-				<button class="B_abajo" onclick="mover('ArrowDown'); activarEventos('ArrowDown')"> ← </button>
-				<button class="B_izquierda" onclick="mover('ArrowLeft'); activarEventos('ArrowLeft')"> ← </button>
-				<button class="B_derecha" onclick="mover('ArrowRight'); activarEventos('ArrowRight')"> → </button>	
+		<div id="juego">
+			<div id="escenario">  </div>
+			<div id="fantasma" class="fantasma"> </div>
+			<div id="fantasmaX" class="fantasma"></div>
+			<div id="fantasmaY" class="fantasma"></div>
+			<div id="cuadradoRojo"> </div>
+			<script src="js/niveles.js"></script>
+			<script src="js/escenario.js"> </script>
+			<script src="js/deteccion.js"> </script>
+			<script src="js/eventos.js"> </script>
+			<script src="js/iniciar.js"> </script>
+			<script src="js/mover.js"> </script>
+			<div class="menu">
+				<h1>PAGINA WEB: CUADRADO ROJO</h1>
+				<h3 id="nivel">nivel: 1</h3>
+				<h3 id="puntaje">llaves: 0</h3>
+				<div class="mando">
+					<button class="B_arriba" onclick="mover('ArrowUp'); activarEventos('ArrowUp')"> ← </button>
+					<button class="B_abajo" onclick="mover('ArrowDown'); activarEventos('ArrowDown')"> ← </button>
+					<button class="B_izquierda" onclick="mover('ArrowLeft'); activarEventos('ArrowLeft')"> ← </button>
+					<button class="B_derecha" onclick="mover('ArrowRight'); activarEventos('ArrowRight')"> → </button>	
+				</div>
+				<button class="restart" onclick="morir()">restart(R)</button>
 			</div>
-			<button class="restart" onclick="morir()">restart(R)</div>
+			<div id="txts" class="menu">
+				<p>texto</p>
+			</div>
 		</div>
 	</body>
 </html>
