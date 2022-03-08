@@ -101,7 +101,7 @@ function ganar(){
 	cuadrado.style.top = y+"px";
 	cuadrado.style.left = x+"px";
 	document.getElementById("escenario").innerHTML = ""
-	alert("HAS GANADO"); 
+	alert("HAS GANADO :D"); 
 	nivel++;
 	document.getElementById("nivel").innerHTML = "nivel: " + (nivel+1);
 	generarEscenario();
