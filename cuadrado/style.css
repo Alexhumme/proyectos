@@ -1,3 +1,6 @@
+body{
+	background-image: url("img/fondo.png");
+}
 h1 {
 	padding: 10px;
 	margin: auto;
@@ -11,13 +14,6 @@ h3{
 	top: 0px;
 	left: 0px;
 }
-body {
-	background-color: cyan;
-	display: grid;
-	grid-template-columns: 550px, 110px;
-	align-content: center;
-	background-image: url("img/fondo.png");
-}
 button {
 	font-family: Impact, fantasy;
 	width: 100px;
@@ -25,6 +21,12 @@ button {
 	position: relative;
 	font-weight: bolder;
 	border-radius: 15px;
+}
+#juego {
+	display: grid;
+	width: 750px;
+	height: auto;
+	margin:auto;
 }
 .B_arriba {
 	top: -25px;
@@ -51,25 +53,25 @@ button {
 	display: flex;
 	border-radius: 45px;
 }
-#menu {
+.menu {
 	background-color: cornsilk;
 	position: relative;
-	top: -8px;
-	margin-left: 542px;
+	top: -50px;
+	margin-left: 550px;
 	width: 200px;
-	height: 550px;
+	height: 520px;
 	display: grid;
+	padding: 10px;
+	border-style: groove;
 }
 #cuadradoRojo {
 	width: 50px;
 	height: 50px;
 	background-color: transparent;
-	position: absolute;
+	position: relative;
 }
 #escenario {
 	display: flex;
-	left: 0px;
-	top: 0px;
 	width: 550px;
 	height: 550px;
 	position: absolute;
@@ -78,8 +80,14 @@ button {
 	grid-template-columns: repeat(11, 50px);
 	grid-template-rows: repeat(11, 50px);
 	*/
-	margin: auto;
-	background-image: url("img/piso.png");
+	background-image: url(img/piso.png);
+}
+#txts{
+	width: 750px;
+	height: 160px;
+	margin-left: 0px;
+	background-color: navy;
+	color: aliceblue;
 }
 #PB{
 	width: 50px;
@@ -113,13 +121,13 @@ button {
 	position: absolute;
 	border-radius: 90px;
 	margin: auto;
-	background-image: url("img/llave.png");
+	background-image: url(img/llave.png);
 }
 .p5{
 	position: absolute;
 	width: 50px;
 	height: 50px;
-	background-image: url("img/puerta1a.png");
+	background-image: url(img/puerta1a.png);
 }
 .p4{
 	background-color: greenyellow;
@@ -148,12 +156,12 @@ button {
 	position: absolute;
 	width: 50px;
 	height: 50px;
-	background-image: url("img/pared.png");
+	background-image: url(img/pared.png);
 }
 .p0{
 	background-color: cyan;
 	position: absolute;
 	width: 50px;
 	height: 50px;
-	background-image: url("img/piso.png");
+	background-image: url(img/piso.png);
 }
