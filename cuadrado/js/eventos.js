@@ -29,16 +29,17 @@ function recolectar(llave){
 function morir(){
 	x = 450;
 	y = 50;
+	nivel = 0;
+	llaves = 0;
 	fantasma.style.visibility = "hidden"
 	//fantasmaX.style.visibility = "hidden"
 	//fantasmaY.style.visibility = "hidden"
 	cuadrado.style.top = y+"px";
 	cuadrado.style.left = x+"px";
 	document.getElementById("escenario").innerHTML = ""
-	nivel = 0;
-	generarEscenario()
-	llaves = 0
+	document.getElementById("nivel").innerHTML = "nivel: " + (nivel+1);
 	document.getElementById("puntaje").innerHTML = "llaves: " + llaves;
+	generarEscenario()
 }
 function colision(tecla){ 
 	switch (tecla){
@@ -92,8 +93,17 @@ function abrir(puerta, tecla){
 		}
 }
 function ganar(){
+	x = 450;
+	y = 50;
+	fantasma.style.visibility = "hidden"
+	//fantasmaX.style.visibility = "hidden"
+	//fantasmaY.style.visibility = "hidden"
+	cuadrado.style.top = y+"px";
+	cuadrado.style.left = x+"px";
+	document.getElementById("escenario").innerHTML = ""
 	alert("HAS GANADO"); 
 	nivel++;
+	document.getElementById("nivel").innerHTML = "nivel: " + (nivel+1);
 	generarEscenario();
 
 }
