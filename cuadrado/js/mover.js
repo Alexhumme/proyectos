@@ -1,5 +1,5 @@
-var x = 450
-var y = 50
+var x = 450;
+var y = 50;
 var cuadrado = document.getElementById("cuadradoRojo");
 var fantasma = document.getElementById("fantasma");
 var fantasmaX = document.getElementById("fantasmaX");
