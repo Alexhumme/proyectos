@@ -15,7 +15,6 @@ h3{
 	left: 0px;
 }
 button {
-	font-family: Impact, fantasy;
 	width: 100px;
 	height: 100px;
 	position: relative;
@@ -28,6 +27,28 @@ button {
 	height: auto;
 	margin:auto;
 }
+.niveles {
+    position: relative;
+	width: 100px;
+}
+
+#nivelesLista {
+    display: none;
+    position: absolute;
+    background-color: lightgrey;
+    min-width: 200px;
+    z-index: 1;
+}
+
+#nivelesLista button {
+    height: 20px;
+	border-radius: 0px;
+}
+
+#nivelesLista button:hover {background-color: white;}
+.niveles:hover #nivelesLista {display: block;}
+.niveles:hover .nivelesBoton {background-color: grey;}
+
 .B_arriba {
 	top: -25px;
 	left: 75px;

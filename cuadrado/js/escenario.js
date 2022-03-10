@@ -11,6 +11,8 @@ var xb = 0
 var yb = 0
 
 function generarEscenario(){
+	document.getElementById("escenario").innerHTML = "";
+	
 	for (let i=0; i < niveles[nivel].length; i++){
 		xb = 0
 		for (let o=0; o < niveles[nivel][i].length; o++){

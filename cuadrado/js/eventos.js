@@ -29,7 +29,7 @@ function recolectar(llave){
 function morir(){
 	x = 450;
 	y = 50;
-	nivel = 0;
+	//nivel = 0;
 	llaves = 0;
 	fantasma.style.visibility = "hidden"
 	//fantasmaX.style.visibility = "hidden"
@@ -37,7 +37,7 @@ function morir(){
 	cuadrado.style.top = y+"px";
 	cuadrado.style.left = x+"px";
 	document.getElementById("escenario").innerHTML = ""
-	document.getElementById("nivel").innerHTML = "nivel: " + (nivel+1);
+	document.getElementById("nivel").innerHTML = "nivel: " + (nivel);
 	document.getElementById("puntaje").innerHTML = "llaves: " + llaves;
 	generarEscenario()
 }
@@ -103,7 +103,7 @@ function ganar(){
 	document.getElementById("escenario").innerHTML = ""
 	alert("HAS GANADO >:D"); 
 	nivel++;
-	document.getElementById("nivel").innerHTML = "nivel: " + (nivel+1);
+	document.getElementById("nivel").innerHTML = "nivel: " + (nivel);
 	generarEscenario();
 
 }
