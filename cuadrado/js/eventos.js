@@ -36,6 +36,7 @@ function morir(){
 	//fantasmaY.style.visibility = "hidden"
 	cuadrado.style.top = y+"px";
 	cuadrado.style.left = x+"px";
+	cuadrado.style.backgroundImage = "url('img/conejoS.png')";
 	document.getElementById("escenario").innerHTML = ""
 	document.getElementById("nivel").innerHTML = "nivel: " + (nivel);
 	document.getElementById("puntaje").innerHTML = "llaves: " + llaves;
