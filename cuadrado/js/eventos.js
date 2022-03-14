@@ -6,13 +6,24 @@ function llavesR(){
 	return llaves
 }
 
-var llaves = llavesR()
+var llaves = llavesR();
 function teleport(panel){
-		cuadrado.style.top = panel.style.top;
-		cuadrado.style.left = panel.style.left;
-		fantasma.style.visibility = "visible"
-		fantasmaX.style.visibility = "visible"
-		fantasmaY.style.visibility = "visible"
+		x = panel.style.left.split();
+		x = x.splice(x.indexOf("p"));
+		x = x.splice(x.indexOf("x"));
+		x = parseInt(x.join(""));
+		y = panel.style.top.split();
+		y = y.splice(y.indexOf("p"));
+		y = y.splice(y.indexOf("x"));
+		y = parseInt(y.join(""));
+		
+		cuadrado.style.top = y+"px";
+		cuadrado.style.left = x+"px";
+		/*
+		fantasma.style.visibility = "visible";
+		fantasmaX.style.visibility = "visible";
+		fantasmaY.style.visibility = "visible";
+		*/
 }
 function comer(fruta){
 	//frutas -= 1;
