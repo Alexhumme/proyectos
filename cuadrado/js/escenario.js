@@ -2,9 +2,7 @@ niveles = [
 	nivel0,
 	nivel1,
 	nivel2,
-	nivel3,
-	nivel4,
-	nivel5
+	nivel3
 ]
 
 var xb = 0
