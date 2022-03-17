@@ -1,7 +1,9 @@
+//variables que guardan al personaje y su posicion
 var x = 450;
 var y = 50;
 var cuadrado = document.getElementById("cuadradoRojo");
 
+// posicion y apariencia iniciales
 cuadrado.style.top = y + "px"
 cuadrado.style.left = x + "px"
 cuadrado.style.backgroundImage = "url('img/conejoS.png')"
