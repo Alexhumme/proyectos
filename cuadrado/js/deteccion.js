@@ -1,6 +1,6 @@
 // MANERA EN QUE SE DETECTA QUE BLOQUE PISA EL JUGADOR
 
-var paneles = document.getElementsByClassName("panel") 
+var paneles = document.getElementsByClassName("panel");
 
 
 // FUNCION QUE EJECUTA CODIGO SEGUN EL PA
@@ -10,9 +10,9 @@ function activarEventos(key){
 			// PANELES DE TELETRANSPORTE
 			switch (paneles[i].id) {
 				case "PA":
-					teleport(document.getElementById("PB")); break;
+					teleport(paneles[i], "PA"); break;
 				case "PB":
-					teleport(document.getElementById("PA")); break;
+					teleport(paneles[i], "PB"); break;
 			}
 			// OTROS PANELES
 			switch (paneles[i].className) {

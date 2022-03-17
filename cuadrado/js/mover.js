@@ -13,20 +13,25 @@ function mover(tecla){
 		case "ArrowUp":
 			y -= 50;
 			cuadrado.style.top = y + "px";
+			cuadrado.style.left = x + "px";
 			cuadrado.style.backgroundImage = "url('img/conejoW.png')";
+			
 			break;
 		case "ArrowDown":
 			y += 50;
 			cuadrado.style.top = y + "px";
+			cuadrado.style.left = x + "px";
 			cuadrado.style.backgroundImage = "url('img/conejoS.png')";
 			break;
 		case "ArrowLeft":
 			x -= 50
+			cuadrado.style.top = y + "px";
 			cuadrado.style.left = x + "px";
 			cuadrado.style.backgroundImage = "url('img/conejoA.png')";
 			break;
 		case "ArrowRight":
 			x += 50
+			cuadrado.style.top = y + "px";
 			cuadrado.style.left = x + "px";
 			cuadrado.style.backgroundImage = "url('img/conejoD.png')";
 			break;

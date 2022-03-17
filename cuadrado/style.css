@@ -135,13 +135,6 @@ button {
 .restart {
 	height: 25px;
 }
-.fantasma {
-	width: 25px;
-	height: 25px;
-	background-color: aqua;
-	position: absolute;
-	visibility: hidden;
-}
 .p6{
 	width: 50px;
 	height: 50px;

@@ -8,21 +8,29 @@ function llavesR(){
 }
 
 var llaves = llavesR();
-function teleport(panel){
+function teleport(panel, tipo){
+		// destipar el panel inicial
+		panel.id = "";
+
+		// buscar el otro teletransportador
+		let tp = document.getElementById(tipo); 
+
 		// convertir texto a numeros
-		x = panel.style.left.split();
+		x = tp.style.left.split();
 		x = x.splice(x.indexOf("p"));
 		x = x.splice(x.indexOf("x"));
 		x = parseInt(x.join(""));
-		y = panel.style.top.split();
+		y = tp.style.top.split();
 		y = y.splice(y.indexOf("p"));
 		y = y.splice(y.indexOf("x"));
 		y = parseInt(y.join(""));
 		
 		// actualizar posicion
-		cuadrado.style.top = y+"px";
-		cuadrado.style.left = x+"px";
-
+		cuadrado.style.top = y-1+"px";
+		cuadrado.style.left = x-1+"px";
+		
+		// retipar el panel inicial
+		panel.id = tipo;
 }
 function comer(fruta){
 	//frutas -= 1;
@@ -76,7 +84,7 @@ function colision(tecla){
 function abrir(puerta, tecla){
 		if(llaves>0){
 			llaves--;
-			puerta.style.top = (y+1)+"px"
+			puerta.style.top = (y+10)+"px"
 			puerta.style.backgroundImage = "url('img/puerta2a.png')";
 			document.getElementById("puntaje").innerHTML = "llaves: " + llaves;
 			var abierto = -abierto
