@@ -1,3 +1,5 @@
+// EJECUTAR TODAS LAS FUNCIONE NECESARIAS AL INICIAR EL JUEGO
+
 addEventListener("load", (event)=>{
 	iniciarMovimiento()
 	generarEscenario()

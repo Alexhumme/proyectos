@@ -1,6 +1,12 @@
 body{
 	background-image: url(img/fondo.png);
 }
+header{
+	margin-top:-8px;
+	height: 100px;
+	background-color: brown;
+	margin-bottom: 30px;
+}
 h1 {
 	padding: 10px;
 	margin: auto;

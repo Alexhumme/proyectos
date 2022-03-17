@@ -1,4 +1,16 @@
 var nivel = 0;
+// DISEÑO DE LOS NIVELES
+/*
+    p0 : suelo
+    p1 : pared
+    p2 : panel mortal
+    p4 : salida/ganar
+    p5 : puerta
+    p6 : llave
+    PA : teletransportador A
+    PB : teletransportador B
+    
+*/
 var nivel0 = [
     l1 = ["p1","p1","p1","p1","p1","p1","p1","p1","p1","p1","p1"],
     l2 = ["p1","p0","p0","p0","p0","p0","p0","p0","p0","p0","p1"],
