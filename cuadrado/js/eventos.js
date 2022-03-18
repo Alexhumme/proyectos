@@ -50,8 +50,8 @@ var w = 1;
 function parpadear(){
 	var p_mortales = document.getElementsByClassName("p2");
 	for (let panel of p_mortales) {
-		if (panel.className.split().length > 7){
-			panel.className = "p2 panel";
+		if (panel.className = "p2 panel p2"){
+			activarEventos("");
 		}
 		panel.className = "p2 panel " + ser[w];
 	}
@@ -59,10 +59,11 @@ function parpadear(){
 	w = w+v;
 
 }
-function morir(){
+function morir(n){
 	x = 450;
 	y = 50;
 	llaves = 0;
+	nivel = n;
 	cuadrado.style.top = y+"px";
 	cuadrado.style.left = x+"px";
 	cuadrado.style.backgroundImage = "url('img/conejoS.png')";

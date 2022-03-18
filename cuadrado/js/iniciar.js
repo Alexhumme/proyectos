@@ -5,7 +5,7 @@ addEventListener("load", (event)=>{
 	generarEscenario();
 	detectar();
 	lniveles();
-	window.setInterval(parpadear, 2000);
+	window.setInterval(parpadear, 1000);
 	document.getElementById("txts").innerHTML = intro;
 	}, false
 )
