@@ -1,10 +1,10 @@
 // contar cantidad de llaves en el nivel
 function llavesR(){
-	let llaves =  0
+	let llaves =  0;
 	for (let i = 0; i < paneles.length; i++){
 		if (paneles[i].className == "p3 panel"){llaves++}
 	}
-	return llaves
+	return llaves;
 }
 
 var llaves = llavesR();
@@ -35,14 +35,34 @@ function teleport(panel, tipo){
 function comer(fruta){
 	//frutas -= 1;
 	//document.getElementById("puntaje").innerHTML = "frutas restantes: " + fruta;
-	fruta.className = "p0"
+	fruta.className = "p0";
 	console.log("comiste");
 }
 function recolectar(llave){
 	llaves += 1;
 	document.getElementById("puntaje").innerHTML = "llaves : " + llaves;
-	llave.className = "p0"
+	llave.className = "p0";
 	console.log("conseguiste llave");
+}
+var ser = [" p0",""];
+var v = 1;
+var w = 1;
+var clase = [];
+function parpadear(){
+	var p_mortales = document.getElementsByClassName("p2");
+	for (let panel of p_mortales) {
+		if (panel.className.split().length > 7){
+			clase = panel.className.split();
+			clase = clase.splice(-1);
+			clase = clase.join("");
+			panel.className = clase;
+		} 
+		console.log(panel.className);
+		panel.className += ser[w];
+	}
+	v = -v;
+	w = w+v;
+
 }
 function morir(){
 	x = 450;
@@ -51,10 +71,10 @@ function morir(){
 	cuadrado.style.top = y+"px";
 	cuadrado.style.left = x+"px";
 	cuadrado.style.backgroundImage = "url('img/conejoS.png')";
-	document.getElementById("escenario").innerHTML = ""
+	document.getElementById("escenario").innerHTML = "";
 	document.getElementById("nivel").innerHTML = "nivel: " + (nivel);
 	document.getElementById("puntaje").innerHTML = "llaves: " + llaves;
-	generarEscenario()
+	generarEscenario();
 }
 // te devuelve a tu posicion anterior si encuentras un muro
 function colision(tecla){ 
@@ -71,23 +91,22 @@ function colision(tecla){
 			break;
 		case "ArrowLeft":
 			x += 50
-			cuadrado.style.left = x + "px"
-			cuadrado.style.backgroundImage = "url('img/conejoA.png')"
+			cuadrado.style.left = x + "px";
+			cuadrado.style.backgroundImage = "url('img/conejoA.png')";
 			break;
 		case "ArrowRight":
 			x -= 50
-			cuadrado.style.left = x + "px"
-			cuadrado.style.backgroundImage = "url('img/conejoD.png')"
+			cuadrado.style.left = x + "px";
+			cuadrado.style.backgroundImage = "url('img/conejoD.png')";
 			break;
 	} 
 }
 function abrir(puerta, tecla){
 		if(llaves>0){
 			llaves--;
-			puerta.style.top = (y+10)+"px"
+			puerta.style.top = (y+10)+"px";
 			puerta.style.backgroundImage = "url('img/puerta2a.png')";
 			document.getElementById("puntaje").innerHTML = "llaves: " + llaves;
-			var abierto = -abierto
 		}else{
 			colision(tecla)
 		}

@@ -1,6 +1,6 @@
 // LISTA DE NIVELES
 niveles = [
-	nivel0, nivel1, nivel2, nivel3, nivel4
+	nivel0, nivel1, nivel2, nivel3, nivel4, nivel5
 ]
 
 // POSICION DE CADA PANEL
