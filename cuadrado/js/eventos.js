@@ -44,21 +44,16 @@ function recolectar(llave){
 	llave.className = "p0";
 	console.log("conseguiste llave");
 }
-var ser = [" p0",""];
+var ser = ["p0","p2"];
 var v = 1;
 var w = 1;
-var clase = [];
 function parpadear(){
 	var p_mortales = document.getElementsByClassName("p2");
 	for (let panel of p_mortales) {
 		if (panel.className.split().length > 7){
-			clase = panel.className.split();
-			clase = clase.splice(-1);
-			clase = clase.join("");
-			panel.className = clase;
-		} 
-		console.log(panel.className);
-		panel.className += ser[w];
+			panel.className = "p2 panel";
+		}
+		panel.className = "p2 panel " + ser[w];
 	}
 	v = -v;
 	w = w+v;
