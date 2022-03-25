@@ -32,9 +32,10 @@ function teleport(panel, tipo){
 		// retipar el panel inicial
 		panel.id = tipo;
 }
+var frutas = 0;
 function comer(fruta){
-	//frutas -= 1;
-	//document.getElementById("puntaje").innerHTML = "frutas restantes: " + fruta;
+	frutas += 1;
+	document.getElementById("frutas").innerHTML = "frutas: " + frutas;
 	fruta.className = "p0";
 	console.log("comiste");
 }
