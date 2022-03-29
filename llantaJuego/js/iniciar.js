@@ -1,0 +1,4 @@
+addEventListener ("load", ()=>{
+    iniciarMovimiento()
+    }
+)

@@ -1,0 +1,33 @@
+#rueda {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    border-radius: 90px;
+    background-color: chocolate;
+    display: grid;
+    grid-template-columns: 30px, 30px;
+}
+#eje {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 350px;
+    left: 500px;
+    background-color: aqua;
+}
+#l1 {
+    background-color: blue;
+    position: relative;
+    width: 10px;
+    height: 10px;
+    left: 25px;
+    top: 15px;
+}
+#l2 {
+    background-color: brown;
+    position: absolute;
+    top: 0px;
+    width: 10px;
+    height: 10px;
+    left: 25px;
+}
