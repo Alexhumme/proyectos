@@ -2,7 +2,7 @@
 function cambN(n){
     nivel=n;
     generarEscenario();
-    morir(nivel);
+    eventos.morir(nivel);
 }
 // funcion que crea los botones de seleccion de nivel
 function lniveles(){

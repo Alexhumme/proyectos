@@ -35,8 +35,8 @@ function mover(tecla){
 			cuadrado.style.left = x + "px";
 			cuadrado.style.backgroundImage = "url('img/conejoD.png')";
 			break;
-		case "r": morir(); break;
-		case "R": morir(); break;
+		case "r": eventos.morir(nivel); break;
+		case "R": eventos.morir(nivel); break;
 	}
 }
 
