@@ -40,7 +40,7 @@
         var canva3 = document.getElementById("canva3");
         var lapiz3 = canva3.getContext("2d");
     // figura
-        //gradiante para la figura (lineal)
+        //gradiante para la figura (lineal) con: x, y, x1, y1
             var grdL = lapiz3.createLinearGradient(0, 100, 0, 0);
             grdL.addColorStop(0, "red");
             grdL.addColorStop(0.5, "lightblue");
@@ -51,7 +51,7 @@
         lapiz3.fill();
         lapiz3.closePath();
     
-    //gradiante para una linea (circular)
+    //gradiante para una linea (circular) con: x, y, r, x1, y1, r1
         var grdC = lapiz3.createRadialGradient(100, 50, 40, 200, 100, 50);
         grdC.addColorStop(0, "red");
         grdC.addColorStop(0.5, "lightgreen");
@@ -62,3 +62,18 @@
     lapiz3.stroke();
     
 //
+
+// TEXTO DE CANVAS
+    //
+        var canva4 = document.getElementById("canva4")
+        var lapiz4 = canva4.getContext("2d");
+    // texto con: texto, x, y
+        lapiz4.font = "20px Arial";
+        lapiz4.fillText("texto relleno", 10, 20);
+    // texto sin rellenar
+        lapiz4.strokeText("texto sin rellenar", 40, 85);
+    // texto alineado al centro
+        lapiz4.font = "15px Comic Sans MS"
+        lapiz4.fillStyle = grdC;
+        lapiz4.textAlign = "center";
+        lapiz4.fillText("he texto centrado he", canva4.width/2, canva4.height/2);
