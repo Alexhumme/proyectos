@@ -16,7 +16,7 @@ var jugador;
             this.juego.width = 480;
             this.juego.height = 270;
             this.contexto = this.juego.getContext("2d");
-            document.body.insertBefore(this.juego, document.body.childNodes[14]);
+            document.body.insertBefore(this.juego, document.body.childNodes[14]); //lugar del documento en el que insertaremos elas canvas
         }
     }
 //
