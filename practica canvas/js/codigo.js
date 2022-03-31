@@ -77,3 +77,54 @@
         lapiz4.fillStyle = grdC;
         lapiz4.textAlign = "center";
         lapiz4.fillText("he texto centrado he", canva4.width/2, canva4.height/2);
+//
+
+// IMAGENES
+    //
+        var canva5 = document.getElementById("canva5");
+        var lapiz5 = canva5.getContext("2d");
+        var img = document.getElementById("grito");
+    // definir funcion que imprima la imagen cuando cargue la pagina
+        window.onload = function(){
+            lapiz5.drawImage(img, 10, 10);
+        }
+//
+
+// RELOJ
+    // dibujar base
+        var canva6 = document.getElementById("canva6");
+        var lapiz6 = canva6.getContext("2d");
+        // calcular el readio del reloj (la mitad del ancho del canva)
+            var radio = canva6.width / 2;
+        // reposicionar el obejto de dibujo al centro del canva
+            lapiz6.translate(radio, radio);
+        // reducir al radio para que el reloj sea un poco mas pequeño que el canva
+            radio = radio*0.90;
+        // crear una funcion que dibuja el reloj
+            function dibujarReloj(){
+                lapiz6.beginPath();
+                lapiz6.arc(0,0,radio,0,2*Math.PI);
+                lapiz6.fillStyle = "black";
+                lapiz6.fill();
+                dibujarCara(lapiz6, radio);
+            }
+    // 
+    // dibujar la cara del reloj
+        function dibujarCara(lapiz, radio){
+        // crear gradiente
+            var grad = lapiz.createRadialGradient(0 ,0 ,radio*0.95 ,0 ,0 ,radio*1.05);
+            grad.addColorStop(0, "cyan");
+            grad.addColorStop(0.5, "black");
+            grad.addColorStop(1, "cyan");
+        // preparar el lapiz y dibujar
+            lapiz.strokeStyle = grad;
+            lapiz.lineWidth = radio*0.1;
+            lapiz.stroke();
+        // hacer el pequeño circulo al centro del reloj
+            lapiz.beginPath();
+            lapiz.arc(0, 0, radio*0.1, 0, 2*Math.PI);
+            lapiz.fillStyle = "cyan";
+            lapiz.fill();
+        }
+        dibujarReloj();
+            
