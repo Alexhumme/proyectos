@@ -107,6 +107,8 @@
                 lapiz6.fillStyle = "black";
                 lapiz6.fill();
                 dibujarCara(lapiz6, radio);
+                numeros(lapiz6, radio);
+                dibujarHora(lapiz6, radio);
             }
     // 
     // dibujar la cara del reloj
@@ -125,6 +127,64 @@
             lapiz.arc(0, 0, radio*0.1, 0, 2*Math.PI);
             lapiz.fillStyle = "cyan";
             lapiz.fill();
+            lapiz.closePath();
         }
+    //
+    // añadir numeros al reloj
+        function numeros(lapiz, radio){
+            var ang;
+            var num;
+            // que el texto este centrado y sea el 15% del radio
+                lapiz.font =  radio * 0.15 + "px arial";
+                lapiz.fillStyle = "yellow";
+                lapiz.textAlign = "center";
+                lapiz.textBaseline = "middle";
+            // escribir los numeros
+                for (num = 1 ; num<13 ; num++){
+                    ang = num * Math.PI/6; //calcula el angulo
+                    lapiz.rotate(ang); //gira el lapiz
+                    lapiz.translate(0, -radio*0.85); //mueve el lapiz
+                    lapiz.rotate(-ang); //gira el lapiz otra vez
+                    lapiz.fillText(num.toString(), 0, 0); //escribe el numero
+                    
+                    lapiz.rotate(ang); //gira el lapiz
+                    lapiz.translate(0, radio*0.85); //mueve el lapiz
+                    lapiz.rotate(-ang); //gira el lapiz de nuevo
+                }
+        }
+    //
+    // añadir manecillas
+        function dibujarHora(lapiz, radio){
+            // obtener hora actual
+                var momentoActual = new Date();
+                var hora = momentoActual.getHours();
+                var minuto = momentoActual.getMinutes();
+                var segundo = momentoActual.getSeconds();
+            // horas
+                hora = hora%12;
+                hora = (hora*Math.PI/6)+(minuto*Math.PI/(6*60))+ (segundo*Math.PI/(6*60*60)); //calcula el angulo de la manecilla
+                dibujarManecilla(lapiz6, hora, radio*0.4, radio*0.07, "red");
+            // minutos
+                minuto = (minuto*Math.PI/(6*5))+ (segundo*Math.PI/(6*5*60)); //calcula el angulo de la manecilla
+                dibujarManecilla(lapiz6, minuto, radio*0.85, radio*0.07, "green");
+            // segundos
+                segundo = (segundo*Math.PI/(6*5)); //calcula el angulo de la manecilla
+                dibujarManecilla(lapiz6, segundo, radio*0.9, radio*0.03, "orange");
+        }
+        function dibujarManecilla(lapiz, pos, largo, ancho, color){
+            lapiz.beginPath();
+            
+            lapiz.lineWidth = ancho;
+            //lapiz.lineCap = "round";
+            lapiz.fillStyle = color;
+            lapiz.moveTo(0, 0);
+            lapiz.rotate(pos);
+            lapiz.lineTo(0, -largo)
+
+            lapiz.stroke();
+            lapiz.rotate(-pos);
+        }
+        setInterval(dibujarReloj, 1000);
         dibujarReloj();
+
             
