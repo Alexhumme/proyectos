@@ -27,9 +27,11 @@ var jugador;
         this.alto = alto;
         this.x = x;
         this.y = y;
-        ctx = juegoFS.contexto;
-        ctx.fillStyle = color;
-        ctx.fillRect(this.x, this.y, this.ancho, this.alto);
+        this.actualizar = function(){
+            ctx = juegoFS.contexto;
+            ctx.fillStyle = color;
+            ctx.fillRect(this.x, this.y, this.ancho, this.alto);
+        }
     }
 
 //

@@ -175,7 +175,7 @@
             lapiz.beginPath();
             
             lapiz.lineWidth = ancho;
-            //lapiz.lineCap = "round";
+            lapiz.lineCap = "round";
             lapiz.fillStyle = color;
             lapiz.moveTo(0, 0);
             lapiz.rotate(pos);
