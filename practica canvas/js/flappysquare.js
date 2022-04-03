@@ -2,8 +2,9 @@ var jugador;
 
 // funcion inicializadora
     function iniciarJuego(){
-        juegoFS.iniciar();
         jugador = new rectangulo(30, 30, "red", 10, 120);
+        juegoFS.iniciar();
+        
     }
     
     
@@ -17,6 +18,10 @@ var jugador;
             this.juego.height = 270;
             this.contexto = this.juego.getContext("2d");
             document.body.insertBefore(this.juego, document.body.childNodes[14]); //lugar del documento en el que insertaremos elas canvas
+            this.intervalo = setInterval(actualizarJuego, 20);
+        },
+        limpiar : function(){
+            this.contexto.clearRect(0,0,this.juego.width,this.juego.height);
         }
     }
 //
@@ -33,6 +38,14 @@ var jugador;
             ctx.fillRect(this.x, this.y, this.ancho, this.alto);
         }
     }
+
+//
+// funcion que actualiza el juego (50FPS)
+    function actualizarJuego(){
+        juegoFS.limpiar();
+        jugador.actualizar();
+    }
+
 
 //
 document.addEventListener("load", iniciarJuego(), false);
