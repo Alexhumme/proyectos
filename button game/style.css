@@ -1,0 +1,85 @@
+body{
+  display: flex;
+  justify-content: space-around;
+}
+.contenedor {
+    display: grid;
+    grid-template-columns: 600px;
+    grid-template-rows: 100px 500px;
+    margin: auto;
+  }
+  .bloque-1 {
+    background-color: #100344;
+    display: flex;
+    justify-content: space-around;
+  }
+  .bloque-2 {
+    background-color: salmon;
+  }
+  .menu {
+    margin: 25px;
+    padding: 0px 100px;
+    background-color: white;
+    color: #100344;
+    font-family: Verdana;
+    font-size: 40px;
+  }
+  .bloque-2-3 {
+    display: inline;
+  }
+  .bloque-2-2 {
+    display:grid;
+    background-color: blue;
+    grid-template-columns: 270px 270px;
+  }
+  .bloque-2-1 {
+    display: grid;
+    grid-template-columns: 270px 270px;
+    grid-template-rows: 50px;
+  }
+  .btn {
+    padding: 40px 40px;
+    margin: 2px;
+    margin-top: 60px;
+  }
+  .btn:hover {
+    background-color: gray;
+  }
+  .contenedor-bloque-2 {
+    display: grid;
+    grid-template-columns: 550px;
+    grid-template-rows: 50px 250px 150px;
+    background-color: #100344;
+    margin: 25px 25px;
+  
+  }
+  .subtit {
+    color: red;
+    text-align: center;
+  }
+  .amarillo {
+    background-color: yellow;
+  }
+  .rojo {
+    background-color: red;
+  }
+  .azul {
+    background-color: blue;
+  }
+  .verde {
+    background-color: green;
+  }
+  .naranja {
+    background-color: orange;
+  }
+  .morado {
+    background-color: purple;
+  }
+  .dato {
+    font-size: 150px;
+    margin: auto;
+    color: red;
+  }
+  body{
+    align-content:space-around;
+  }

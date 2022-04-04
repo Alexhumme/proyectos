@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+ <head> 
+  <meta charset="UTF-8"> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="stylesheet" href="style.css"> 
+  <title>Document</title> 
+ </head> 
+ <body> 
+  <div class="contenedor"> 
+   <div class="bloque-1"> 
+    <button class="menu">M</button> 
+    <button class="menu">R</button> 
+   </div> 
+   <div class="bloque-2"> 
+    <div class="contenedor-bloque-2"> 
+     <div class="bloque-2-1"> 
+      <h2 class="subtit">intentos</h2> 
+      <h2 class="subtit">puntos</h2> 
+     </div> 
+     <div class="bloque-2-2"> 
+      <h2 class="dato" id="intentos">5</h2> 
+      <h2 class="dato" id="puntos">0</h2> 
+     </div> 
+     <script src="juego.js"></script>
+     <div class="bloque-2-3"> 
+      <button class="btn rojo" type="button" onclick="jugar_color('rojo')"></button> 
+      <button class="btn amarillo" type="button" onclick="jugar_color('amarillo')"></button> 
+      <button class="btn azul" type="button" onclick="jugar_color('azul')"></button> 
+      <button class="btn morado" type="button" onclick="jugar_color('morado')"></button> 
+      <button class="btn verde" type="button" onclick="jugar_color('verde')"></button> 
+      <button class="btn naranja" type="button" onclick="jugar_color('naranja')"></button> 
+     </div> 
+    </div> 
+   </div> 
+  </div> 
+ </body>
+</html>

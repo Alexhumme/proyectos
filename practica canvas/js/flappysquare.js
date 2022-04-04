@@ -43,6 +43,7 @@ var jugador;
 // funcion que actualiza el juego (50FPS)
     function actualizarJuego(){
         juegoFS.limpiar();
+        jugador.x += 1;
         jugador.actualizar();
     }
 
