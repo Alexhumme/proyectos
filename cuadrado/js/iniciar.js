@@ -5,7 +5,8 @@ addEventListener("load", (event)=>{
 	generarEscenario();
 	detectar();
 	lniveles();
-	window.setInterval(eventos.parpadear, 1200);
+	window.setInterval(()=>{eventos.animaciones.girar()}, 20);
+	window.setInterval(()=>{eventos.animaciones.parpadear()}, 1200);
 	document.getElementById("txts").innerHTML = intro;
 	}, false
 )

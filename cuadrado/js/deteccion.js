@@ -2,7 +2,6 @@
 
 var paneles = document.getElementsByClassName("panel");
 
-
 // FUNCION QUE EJECUTA CODIGO SEGUN EL PANEL
 function activarEventos(key){
 	for (let i = 0; i < paneles.length; i++){
@@ -30,8 +29,8 @@ function activarEventos(key){
 
 // FUNCION QUE EJECUTA LA ANTERIOR CADA QUE OPRIMES UNA TECLA
 function detectar(){
-	document.addEventListener("keydown", ()=>{
-		activarEventos(event.key)
+	document.addEventListener("keydown", (e)=>{
+		activarEventos(e.key)
 	}
 	,false) 
 }

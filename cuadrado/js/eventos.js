@@ -42,16 +42,23 @@ var eventos = {
 		llave.className = "p0";
 		console.log("conseguiste llave");
 	},
-	parpadear : function(){
-		var p_mortales = document.getElementsByClassName("p2");
-		for (let panel of p_mortales) {
-			if (panel.className = "p2 panel p2"){
-				activarEventos("");
+	animaciones : {
+		parpadear : ()=>{
+			var p_mortales = document.getElementsByClassName("p2");
+			for (let panel of p_mortales) {
+				if (panel.className = "p2 panel p2"){
+					activarEventos("");
+				}
+				panel.className = "p2 panel " + ser[w];
 			}
-			panel.className = "p2 panel " + ser[w];
+			v = -v;
+			w = w+v;
+		},
+		girar : ()=>{
+			var salida = document.getElementsByClassName("p4")[0];
+			rot += 2;
+			salida.style.transform = "rotate("+rot+"deg)";
 		}
-		v = -v;
-		w = w+v;
 	
 	},
 	morir : function(n){
@@ -98,7 +105,7 @@ var eventos = {
 			puerta.style.backgroundImage = "url('img/puerta2a.png')";
 			document.getElementById("puntaje").innerHTML = "llaves: " + llaves;
 		}else{
-			colision(tecla)
+			eventos.colision(tecla)
 		}
 	},
 	ganar : function(){
@@ -113,6 +120,7 @@ var eventos = {
 		generarEscenario();
 	}
 }
+var rot = 0;
 var llaves = eventos.llavesR();
 var frutas = 0;
 var ser = ["p0","p2"];
