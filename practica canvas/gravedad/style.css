@@ -1,15 +1,27 @@
 body {
-    background-color: aqua;
+    background-color: rgb(70, 13, 13);
 }
-#testDiv{
-    border: 1px solid #747474 ;
-    width: 500px;
-    height: 200px;
-    background-color: aliceblue;
+h3{
+    margin:auto;
+}
+#juego{
+    align-content:center;
+    display:grid;
+    grid-template-rows: auto;
+    margin:auto;
+    align-items: center;
+    background-color: antiquewhite;
+    padding: 10px;
+    width: 650px;
+    height: 300px;
 }
 #testCanva{
     border: 1px solid #747474 ;
-    width: 500px;
-    height: 200px;
+    width: 600px;
+    height: 250px;
     background-color: aliceblue;
+}
+.elemento{
+    display:flex;
+    margin:auto;
 }

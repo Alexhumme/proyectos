@@ -8,12 +8,18 @@
     <title>gravedad</title>
 </head>
 <body>
-    <h3>objeto con gravedad en canvas</h3>
-    <button onmousedown="acelerarY(-2)" onmouseup="acelerarY(0.7)">ACCELERATE</button>
-    <canvas id="testCanva"></canvas><button type="button" onclick="iniciarJuegoC()">canva</button>
-    <h3>objeto con gravedad en div</h3>
-    <div id ="testDiv"></div><button type="button" onclick="iniciarJuegoD()">div</button>
+    <div id="juego">
+        <h3 class="elemento">objeto con fisicas en canvas</h3>
+        <canvas class="elemento" id="testCanva"></canvas>
+        <button class="elemento" type="button" onclick="iniciarJuegoC()">iniciar</button>
+    </div>
+    
+    <script src="js/proyectiles.js"></script>
+    <script src="js/contacto.js"></script>
+    <script src="js/reentrar.js"></script>
+    <script src="js/constructor.js"></script> 
+    <script src="js/escenarioCanva.js"></script>
     <script src="js/testCanva.js"></script>
-    <script src="js/testDiv.js"></script>
+    
 </body>
 </html>
