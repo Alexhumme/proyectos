@@ -4,7 +4,7 @@ var parar;
 var fps = 0, segundo = 0, conteoFrames = 0;
 
 function iniciarJuegoC(){
-    elementoC = new elemento(8, 8, 70, 70, false, "jugador", 0.5, 0.05, 0.6, 20, "yellow");
+    elementoC = new elemento(8, 8, 70, 70, false, "jugador", 0.5, 0.1, 0.6, 20, "yellow");
     proX=elementoC.x; proY=elementoC.y;
     juegoCanva.iniciarArea(); 
     generarProyectiles();
@@ -73,7 +73,7 @@ function actualizarJuegoC(){
     generarEscenario();
     consultarFrames();
     elementoC.mover();
-    elementoC.dibujar("jugador");
+    elementoC.dibujar();
     proyectiles[0].mover();
     dibujarProjectiles();
  

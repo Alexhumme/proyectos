@@ -14,9 +14,9 @@ function elemento(ancho, alto, x, y, saltar, tipo, gravedad, friccion, rebote, s
     this.velGravedad = 0;
     this.rebote = rebote;
     this.salto = this.y - salto;
-    this.dibujar = function(tipo){
+    this.dibujar = function(){
         ctx = juegoCanva.ctx;
-        switch (tipo) {
+        switch (this.tipo) {
             case "bloque": 
             ctx.fillStyle = this.color;
             ctx.fillRect(this.x,this.y,this.ancho,this.alto);
@@ -58,6 +58,7 @@ function elemento(ancho, alto, x, y, saltar, tipo, gravedad, friccion, rebote, s
         reentrar();
     }
     this.contacto = function(superficie, lado){
+        if (this.color != "blue" ){
         switch (lado)
         {
             case "up":
@@ -82,7 +83,7 @@ function elemento(ancho, alto, x, y, saltar, tipo, gravedad, friccion, rebote, s
                 this.y = superficie.y+this.alto+superficie.alto;
                 this.velGravedad = -(this.velGravedad*this.rebote)+1.5;
         }
-        
+        }
 
     }
 }
