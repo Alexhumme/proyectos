@@ -49,9 +49,9 @@ function acelerarY(n){
 }
 function actCoordenadas(){
     if (juegoCanva.teclas){
-        if (juegoCanva.teclas[65]){acelerarX(-0.5)}
-        if (juegoCanva.teclas[68]){acelerarX(0.5)}
-        if (juegoCanva.teclas[87]){acelerarY(-1); elementoC.saltar = false;}
+        if (juegoCanva.teclas[65]){acelerarX(-0.1); retraso+=elementoC.velx}
+        if (juegoCanva.teclas[68]){acelerarX(0.1); retraso+=elementoC.velx}
+        if (juegoCanva.teclas[87]){acelerarY(-0.8); elementoC.saltar = false;}
     }
 }
 function consultarFrames(){
@@ -76,6 +76,6 @@ function actualizarJuegoC(){
     elementoC.dibujar();
     proyectiles[0].mover();
     dibujarProjectiles();
- 
+
 
 }

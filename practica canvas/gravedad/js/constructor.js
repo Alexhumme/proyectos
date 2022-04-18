@@ -46,25 +46,24 @@ function elemento(ancho, alto, x, y, saltar, tipo, gravedad, friccion, rebote, s
     }
     this.mover = function(){
         this.angulo += (this.velx*Math.PI/180)*2;
-        if (this.velGravedad + this.gravedad < 12){this.velGravedad += this.gravedad;}
+        if (this.velGravedad + this.gravedad < 10){this.velGravedad += this.gravedad;}
         this.x += this.velx;
         this.y += this.vely + this.velGravedad;
         // frenar
         if(parar){this.velx -= this.velx*this.friccion}
         // caer automaticamente
-        if (this.y < this.salto){this.gravedad = 1.5}
+        if (this.y < this.salto){this.gravedad = 1}
         // casos de contacto
         casoContacto(this);
         reentrar();
     }
     this.contacto = function(superficie, lado){
-        if (this.color != "blue" ){
         switch (lado)
         {
             case "up":
                 //console.log("up");
+                if (this.color != "blue"){this.salto = this.y - 20;}
                 this.saltar = true;
-                this.salto = this.y - 20;
                 this.y = superficie.y-this.alto;
                 this.velGravedad = -(this.velGravedad*this.rebote);
                 break;
@@ -81,9 +80,9 @@ function elemento(ancho, alto, x, y, saltar, tipo, gravedad, friccion, rebote, s
             case "down":
                 //console.log("down");
                 this.y = superficie.y+this.alto+superficie.alto;
-                this.velGravedad = -(this.velGravedad*this.rebote)+1.5;
+                this.velGravedad = -(this.velGravedad*this.rebote);
         }
-        }
+        
 
     }
 }
