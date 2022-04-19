@@ -4,7 +4,7 @@ var parar;
 var fps = 0, segundo = 0, conteoFrames = 0;
 
 function iniciarJuegoC(){
-    elementoC = new elemento(8, 8, 70, 70, false, "jugador", 0.5, 0.1, 0.6, 20, "yellow");
+    elementoC = new elemento(8, 8, 70, 70, false, "jugador", "", 0.5, 0.1, 0.6, 20, "yellow");
     proX=elementoC.x; proY=elementoC.y;
     juegoCanva.iniciarArea(); 
     generarProyectiles();
@@ -28,7 +28,7 @@ var juegoCanva = {
             acelerarY(2);
         }, false);
         window.addEventListener("mousedown", (e)=>{
-            disparar(e.pageX-45, e.pageY-45);
+            disparar(e.x-juegoCanva.canva.offsetLeft, e.y-juegoCanva.canva.offsetTop);
         }, false);
     },
     limpiar : function(){
@@ -38,7 +38,7 @@ var juegoCanva = {
 }
 
 function acelerarX(n){
-    if (elementoC.velx + n <= 12 && elementoC.velx + n >= -12){elementoC.velx += n;}
+    if (elementoC.velx + n <= 2 && elementoC.velx + n >= -2){elementoC.velx += n;}
 }
 function acelerarY(n){
     if (n<0){ 
@@ -76,6 +76,6 @@ function actualizarJuegoC(){
     elementoC.dibujar();
     proyectiles[0].mover();
     dibujarProjectiles();
-
+    
 
 }

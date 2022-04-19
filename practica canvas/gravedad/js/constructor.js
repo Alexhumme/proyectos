@@ -1,4 +1,4 @@
-function elemento(ancho, alto, x, y, saltar, tipo, gravedad, friccion, rebote, salto,color){
+function elemento(ancho, alto, x, y, saltar, tipo, subTipo, gravedad, friccion, rebote, salto,color){
     this.saltar = saltar;
     this.angulo = 0;
     this.ancho = ancho;
@@ -6,7 +6,9 @@ function elemento(ancho, alto, x, y, saltar, tipo, gravedad, friccion, rebote, s
     this.x = x;
     this.y = y;
     this.tipo = tipo;
+    this.subTipo = subTipo;
     this.color = color;
+    this.colo2 = false;
     this.velx = 0;
     this.vely = 0;
     this.gravedad = gravedad;
@@ -19,6 +21,7 @@ function elemento(ancho, alto, x, y, saltar, tipo, gravedad, friccion, rebote, s
         switch (this.tipo) {
             case "bloque": 
             ctx.fillStyle = this.color;
+            if (this.colo2 != false){ctx.fillStyle = this.color2}
             ctx.fillRect(this.x,this.y,this.ancho,this.alto);
             break;
             case "jugador":
@@ -55,34 +58,48 @@ function elemento(ancho, alto, x, y, saltar, tipo, gravedad, friccion, rebote, s
         if (this.y < this.salto){this.gravedad = 1}
         // casos de contacto
         casoContacto(this);
-        reentrar();
+        reentrar(this);
     }
     this.contacto = function(superficie, lado){
-        switch (lado)
+        switch (superficie.subTipo)
         {
-            case "up":
-                //console.log("up");
-                if (this.color != "blue"){this.salto = this.y - 20;}
-                this.saltar = true;
-                this.y = superficie.y-this.alto;
-                this.velGravedad = -(this.velGravedad*this.rebote);
+            case 1:
+                switch (lado)
+                {
+                    case "up":
+                        //console.log("up");
+                        if (this.color != "blue"){this.salto = this.y - 20;}
+                        this.saltar = true;
+                        this.y = superficie.y-this.alto;
+                        this.velGravedad = -(this.velGravedad*this.rebote);
+                        break;
+                    case "left":
+                        ///console.log("left");
+                        this.x = superficie.x-this.ancho; 
+                        this.velx = -(this.velx*this.rebote);
+                        break;
+                    case "right":
+                        //console.log("right");
+                        this.x = superficie.x+superficie.ancho+this.ancho; 
+                        this.velx = -(this.velx*this.rebote);
+                        break;
+                    case "down":
+                        //console.log("down");
+                        this.y = superficie.y+this.alto+superficie.alto;
+                        this.velGravedad = -(this.velGravedad*this.rebote);
+                }
+                if (this.color == "blue" ){disparo = false;}
                 break;
-            case "left":
-                ///console.log("left");
-                this.x = superficie.x-this.ancho; 
-                this.velx = -(this.velx*this.rebote);
+            case 2:
+                if (this.color == "blue" ){
+                    switch (superficie.color){
+                        case "blue": c2 = "purple"; break;
+                        case "green": c2 = "blue"; break;
+                        case "purple": c2 = "green"; break;
+                    }
+                    disparo = false;
+                }
                 break;
-            case "right":
-                //console.log("right");
-                this.x = superficie.x+superficie.ancho+this.ancho; 
-                this.velx = -(this.velx*this.rebote);
-                break;
-            case "down":
-                //console.log("down");
-                this.y = superficie.y+this.alto+superficie.alto;
-                this.velGravedad = -(this.velGravedad*this.rebote);
         }
-        
-
     }
 }

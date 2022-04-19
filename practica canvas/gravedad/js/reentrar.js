@@ -2,15 +2,15 @@
 var limx = 0;
 var limy = 0;
 
-function reentrar(){
-    if (elementoC.x - elementoC.ancho < 0 || 
-        elementoC.x + elementoC.ancho > juegoCanva.canva.width){
-        elementoC.x = 30;
-        limx = elementoC.velx;
+function reentrar(elemento){
+    if (elemento.x - elemento.ancho < 0 || 
+        elemento.x + elemento.ancho > juegoCanva.canva.width){
+        elemento.x = 30;
+        limx = elemento.velx;
     }
-    if (elementoC.y - elementoC.alto < 0 || 
-        elementoC.y + elementoC.alto > juegoCanva.canva.height){
-        elementoC.y = 30;
-        limy  = elementoC.velGravedad;
+    if (elemento.y - elemento.alto < 0 || 
+        elemento.y + elemento.alto > juegoCanva.canva.height){
+        elemento.y = 30;
+        limy  = elemento.velGravedad;
     }
 }
