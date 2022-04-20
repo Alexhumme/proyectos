@@ -100,6 +100,34 @@ function elemento(ancho, alto, x, y, saltar, tipo, subTipo, gravedad, friccion, 
                     disparo = false;
                 }
                 break;
+            case 3:
+                switch (superficie.color){
+                    case "green": 
+                    switch (lado)
+                    {
+                        case "up":
+                            //console.log("up");
+                            if (this.color != "blue"){this.salto = this.y - 20;}
+                            this.saltar = true;
+                            this.y = superficie.y-this.alto;
+                            this.velGravedad = -(this.velGravedad*this.rebote);
+                            break;
+                        case "left":
+                            ///console.log("left");
+                            this.x = superficie.x-this.ancho; 
+                            this.velx = -(this.velx*this.rebote);
+                            break;
+                        case "right":
+                            //console.log("right");
+                            this.x = superficie.x+superficie.ancho+this.ancho; 
+                            this.velx = -(this.velx*this.rebote);
+                            break;
+                        case "down":
+                            //console.log("down");
+                            this.y = superficie.y+this.alto+superficie.alto;
+                            this.velGravedad = -(this.velGravedad*this.rebote);
+                    }
+                }
         }
     }
 }
