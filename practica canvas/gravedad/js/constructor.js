@@ -60,34 +60,38 @@ function elemento(ancho, alto, x, y, saltar, tipo, subTipo, gravedad, friccion, 
         casoContacto(this);
         reentrar(this);
     }
+    this.rebotar = function(superficie, lado, esto){
+        switch (lado)
+                {
+                    case "up":
+                        //console.log("up");
+                        if (esto.color != "blue"){esto.salto = esto.y - 20;}
+                        esto.saltar = true;
+                        esto.y = superficie.y-esto.alto;
+                        esto.velGravedad = -(esto.velGravedad*esto.rebote);
+                        break;
+                    case "left":
+                        ///console.log("left");
+                        esto.x = superficie.x-esto.ancho; 
+                        esto.velx = -(esto.velx*esto.rebote);
+                        break;
+                    case "right":
+                        //console.log("right");
+                        esto.x = superficie.x+superficie.ancho+esto.ancho; 
+                        esto.velx = -(esto.velx*esto.rebote);
+                        break;
+                    case "down":
+                        //console.log("down");
+                        esto.y = superficie.y+esto.alto+superficie.alto;
+                        esto.velGravedad = -(esto.velGravedad*esto.rebote);
+                }
+    }
+    // que hacer cuando en objeto entre en contacto con una superficie en un lado dado
     this.contacto = function(superficie, lado){
         switch (superficie.subTipo)
         {
             case 1:
-                switch (lado)
-                {
-                    case "up":
-                        //console.log("up");
-                        if (this.color != "blue"){this.salto = this.y - 20;}
-                        this.saltar = true;
-                        this.y = superficie.y-this.alto;
-                        this.velGravedad = -(this.velGravedad*this.rebote);
-                        break;
-                    case "left":
-                        ///console.log("left");
-                        this.x = superficie.x-this.ancho; 
-                        this.velx = -(this.velx*this.rebote);
-                        break;
-                    case "right":
-                        //console.log("right");
-                        this.x = superficie.x+superficie.ancho+this.ancho; 
-                        this.velx = -(this.velx*this.rebote);
-                        break;
-                    case "down":
-                        //console.log("down");
-                        this.y = superficie.y+this.alto+superficie.alto;
-                        this.velGravedad = -(this.velGravedad*this.rebote);
-                }
+                this.rebotar(superficie, lado,this);
                 if (this.color == "blue" ){disparo = false;}
                 break;
             case 2:
@@ -103,30 +107,12 @@ function elemento(ancho, alto, x, y, saltar, tipo, subTipo, gravedad, friccion, 
             case 3:
                 switch (superficie.color){
                     case "green": 
-                    switch (lado)
-                    {
-                        case "up":
-                            //console.log("up");
-                            if (this.color != "blue"){this.salto = this.y - 20;}
-                            this.saltar = true;
-                            this.y = superficie.y-this.alto;
-                            this.velGravedad = -(this.velGravedad*this.rebote);
-                            break;
-                        case "left":
-                            ///console.log("left");
-                            this.x = superficie.x-this.ancho; 
-                            this.velx = -(this.velx*this.rebote);
-                            break;
-                        case "right":
-                            //console.log("right");
-                            this.x = superficie.x+superficie.ancho+this.ancho; 
-                            this.velx = -(this.velx*this.rebote);
-                            break;
-                        case "down":
-                            //console.log("down");
-                            this.y = superficie.y+this.alto+superficie.alto;
-                            this.velGravedad = -(this.velGravedad*this.rebote);
-                    }
+                    this.rebotar(superficie, lado,this);
+                    if (this.color == "blue" ){disparo = false;}
+                    break;
+                    case "blue":
+
+                    break;
                 }
         }
     }

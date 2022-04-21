@@ -54,7 +54,7 @@ function generarEscenario()
                 case 3: c = c2;
                     break;
             }
-            bloques.push( new elemento(15, 17, xb, yb, false, "bloque", nivel[y][x], 0, 0, 0, 0, c) );
+            bloques.push( new elemento(15, 15, xb, yb, false, "bloque", nivel[y][x], 0, 0, 0, 0, c) );
 			xb += 15
 		}
 		yb += 15

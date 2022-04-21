@@ -4,10 +4,26 @@ var parar;
 var fps = 0, segundo = 0, conteoFrames = 0;
 
 function iniciarJuegoC(){
-    elementoC = new elemento(8, 8, 70, 70, false, "jugador", "", 0.5, 0.1, 0.6, 20, "yellow");
+    elementoC = new elemento(7.5, 7.5, 70, 70, false, "jugador", "", 0.5, 0.1, 0.6, 20, "yellow");
     proX=elementoC.x; proY=elementoC.y;
     juegoCanva.iniciarArea(); 
     generarProyectiles();
+}
+function detectoresDeEventos(){
+    document.addEventListener("keydown", (e)=>{
+        juegoCanva.teclas = (juegoCanva.teclas || []);
+        juegoCanva.teclas[e.keyCode] = true;
+        parar = false;
+        casoContacto(elementoC);
+    }, false);
+    document.addEventListener("keyup", (e)=>{
+        juegoCanva.teclas[e.keyCode] = false;
+        parar = true;
+        acelerarY(2);
+    }, false);
+    window.addEventListener("mousedown", (e)=>{
+        disparar(e.x-juegoCanva.canva.offsetLeft, e.y-juegoCanva.canva.offsetTop);
+    }, false);
 }
 var juegoCanva = {
     canva : document.getElementById("testCanva"),
@@ -16,20 +32,7 @@ var juegoCanva = {
         this.canva.height = 250;
         this.ctx = this.canva.getContext("2d");
         this.intervalo = window.setInterval(actualizarJuegoC, 20);
-        document.addEventListener("keydown", (e)=>{
-            juegoCanva.teclas = (juegoCanva.teclas || []);
-            juegoCanva.teclas[e.keyCode] = true;
-            parar = false;
-            casoContacto(elementoC);
-        }, false);
-        document.addEventListener("keyup", (e)=>{
-            juegoCanva.teclas[e.keyCode] = false;
-            parar = true;
-            acelerarY(2);
-        }, false);
-        window.addEventListener("mousedown", (e)=>{
-            disparar(e.x-juegoCanva.canva.offsetLeft, e.y-juegoCanva.canva.offsetTop);
-        }, false);
+        detectoresDeEventos();
     },
     limpiar : function(){
         bloques = [];
