@@ -8,7 +8,6 @@ function elemento(ancho, alto, x, y, saltar, tipo, subTipo, gravedad, friccion, 
     this.tipo = tipo;
     this.subTipo = subTipo;
     this.color = color;
-    this.colo2 = false;
     this.velx = 0;
     this.vely = 0;
     this.gravedad = gravedad;
@@ -19,10 +18,20 @@ function elemento(ancho, alto, x, y, saltar, tipo, subTipo, gravedad, friccion, 
     this.dibujar = function(){
         ctx = juegoCanva.ctx;
         switch (this.tipo) {
-            case "bloque": 
+            case "bloque":
             ctx.fillStyle = this.color;
-            if (this.colo2 != false){ctx.fillStyle = this.color2}
             ctx.fillRect(this.x,this.y,this.ancho,this.alto);
+                switch (this.subTipo){
+                    case 0: break;
+                    case 1: break;
+                    case 2: 
+                        ctx.beginPath();
+                        ctx.fillStyle = "red";
+                        ctx.arc(this.x,this.y,5, 0, Math.PI*2);
+                        ctx.closePath();
+                    break;
+                    case 3: break;
+                }
             break;
             case "jugador":
             // dibujar jugador
