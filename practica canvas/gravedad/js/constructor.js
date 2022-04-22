@@ -120,8 +120,10 @@ function elemento(ancho, alto, x, y, saltar, tipo, subTipo, gravedad, friccion, 
                     if (this.color == "blue" ){disparo = false;}
                     break;
                     case "blue":
-
+                    this.saltar = true;
                     break;
+                    case "purple":
+                        this.velx += 2;
                 }
         }
     }
