@@ -73,7 +73,9 @@ function consultarFrames(){
 function actualizarJuegoC(){
     juegoCanva.limpiar();
     actCoordenadas();
-    generarEscenario();
+    generarEscenario(nivel,"bloque",15,15);
+    generarEscenario(capa2,"jugador",3,3);
+    moverEnemigos();
     consultarFrames();
     elementoC.mover();
     elementoC.dibujar();

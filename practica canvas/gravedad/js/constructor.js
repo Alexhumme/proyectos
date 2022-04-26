@@ -27,7 +27,7 @@ function elemento(ancho, alto, x, y, saltar, tipo, subTipo, gravedad, friccion, 
                     case 2: 
                         ctx.beginPath();
                         ctx.fillStyle = "red";
-                        ctx.arc(this.x,this.y,5, 0, Math.PI*2);
+                        ctx.fillRect(this.x*1.13,this.y*1.02,this.ancho/2,this.alto/2);
                         ctx.closePath();
                     break;
                     case 3: break;
@@ -123,7 +123,7 @@ function elemento(ancho, alto, x, y, saltar, tipo, subTipo, gravedad, friccion, 
                     this.saltar = true;
                     break;
                     case "purple":
-                        this.velx += 2;
+                        this.velx += 1;
                 }
         }
     }
