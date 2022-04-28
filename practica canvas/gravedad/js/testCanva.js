@@ -8,13 +8,14 @@ function iniciarJuegoC(){
     proX=elementoC.x; proY=elementoC.y;
     juegoCanva.iniciarArea(); 
     generarProyectiles();
+    generarEscenario(capa3,"jugador",8,8,enemigos);
 }
 function detectoresDeEventos(){
     document.addEventListener("keydown", (e)=>{
         juegoCanva.teclas = (juegoCanva.teclas || []);
         juegoCanva.teclas[e.keyCode] = true;
         parar = false;
-        casoContacto(elementoC);
+        casoContacto(elementoC,bloques);
     }, false);
     document.addEventListener("keyup", (e)=>{
         juegoCanva.teclas[e.keyCode] = false;
@@ -73,8 +74,8 @@ function consultarFrames(){
 function actualizarJuegoC(){
     juegoCanva.limpiar();
     actCoordenadas();
-    generarEscenario(nivel,"bloque",15,15);
-    generarEscenario(capa2,"jugador",3,3);
+    generarEscenario(nivel,"bloque",15,15,bloques);
+    generarEscenario(capa2,"jugador",3,3,bloques);
     moverEnemigos();
     consultarFrames();
     elementoC.mover();

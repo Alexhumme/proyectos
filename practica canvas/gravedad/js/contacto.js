@@ -1,5 +1,5 @@
-function casoContacto(char){
-    for (pared of bloques){
+function casoContacto(char, lista){
+    for (pared of lista){
         
             if (char.y > pared.y && char.y < pared.y+pared.alto)
             {

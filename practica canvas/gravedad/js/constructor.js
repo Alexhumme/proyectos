@@ -1,4 +1,5 @@
 function elemento(ancho, alto, x, y, saltar, tipo, subTipo, gravedad, friccion, rebote, salto,color){
+    this.img=new Image();
     this.saltar = saltar;
     this.angulo = 0;
     this.ancho = ancho;
@@ -22,16 +23,12 @@ function elemento(ancho, alto, x, y, saltar, tipo, subTipo, gravedad, friccion, 
             ctx.fillStyle = this.color;
             ctx.fillRect(this.x,this.y,this.ancho,this.alto);
                 switch (this.subTipo){
-                    case 0: break;
-                    case 1: break;
-                    case 2: 
-                        ctx.beginPath();
-                        ctx.fillStyle = "red";
-                        ctx.fillRect(this.x*1.13,this.y*1.02,this.ancho/2,this.alto/2);
-                        ctx.closePath();
-                    break;
-                    case 3: break;
+                    case 0: this.img.src = "imgs/fondo.png";break;
+                    //case 1: this.img.src = "imgs/fondo.png";break;
+                    case 2: this.img.src = "imgs/cambiador.gif";break;
+                    case 3: ;break;
                 }
+                ctx.drawImage(this.img,this.x,this.y);
             break;
             case "jugador":
             // dibujar jugador
@@ -47,11 +44,15 @@ function elemento(ancho, alto, x, y, saltar, tipo, subTipo, gravedad, friccion, 
             ctx.moveTo(this.x/2, this.y/4);
             ctx.stroke();
             ctx.closePath();
-            ctx.beginPath(); //ojo
+            /*ctx.beginPath(); //ojo
             ctx.arc(this.ancho/2, -this.alto*0.5, this.alto*0.2, 0, Math.PI*2);
             ctx.fill();
-            ctx.closePath();
+            ctx.closePath();*/
+            this.img.src = "imgs/personaje.gif";
+            ctx.drawImage(this.img,0-this.ancho,0-this.alto,this.ancho*2,this.alto*2);
             ctx.restore();
+            
+            
             //
             break;
         }
@@ -66,7 +67,7 @@ function elemento(ancho, alto, x, y, saltar, tipo, subTipo, gravedad, friccion, 
         // caer automaticamente
         if (this.y < this.salto){this.gravedad = 1}
         // casos de contacto
-        casoContacto(this);
+        casoContacto(this,bloques);
         reentrar(this);
     }
     this.rebotar = function(superficie, lado, esto){
@@ -125,6 +126,15 @@ function elemento(ancho, alto, x, y, saltar, tipo, subTipo, gravedad, friccion, 
                     case "purple":
                         this.velx += 1;
                 }
+                break;
+            case 4:
+                superficie.color = "blue";
+                break;
+
+            case 5:
+                this.rebotar(superficie, lado, this);
+                break;
+            default: break;
         }
     }
 }
