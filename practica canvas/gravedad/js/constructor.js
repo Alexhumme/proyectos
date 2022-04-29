@@ -24,9 +24,9 @@ function elemento(ancho, alto, x, y, saltar, tipo, subTipo, gravedad, friccion, 
             ctx.fillRect(this.x,this.y,this.ancho,this.alto);
                 switch (this.subTipo){
                     case 0: this.img.src = "imgs/fondo.png";break;
-                    //case 1: this.img.src = "imgs/fondo.png";break;
-                    case 2: this.img.src = "imgs/cambiador.gif";break;
-                    case 3: ;break;
+                    case 1: this.img.src = "imgs/bloque1.png";;break;
+                    case 2: this.img.src = "imgs/cambiador.png";break;
+                    case 3: this.img.src = img2;break;
                 }
                 ctx.drawImage(this.img,this.x,this.y);
             break;
@@ -35,7 +35,7 @@ function elemento(ancho, alto, x, y, saltar, tipo, subTipo, gravedad, friccion, 
             ctx.save();
             ctx.translate(this.x,this.y);
             ctx.rotate(this.angulo); //para girar, rotamos toda la canva guardando y restaurando su estado anterior, de esta manera debemos declarar que el circulo se encuentra en el 0,0 y sera entonces lo unico que gire
-            ctx.fillStyle = this.color;
+            /*ctx.fillStyle = this.color;
             ctx.beginPath(); //cuerpo
             ctx.arc(0,0,this.ancho,0,2*Math.PI);
             ctx.fill();
@@ -107,16 +107,16 @@ function elemento(ancho, alto, x, y, saltar, tipo, subTipo, gravedad, friccion, 
             case 2:
                 if (this.color == "blue" ){
                     switch (superficie.color){
-                        case "blue": c2 = "purple"; break;
-                        case "green": c2 = "blue"; break;
-                        case "purple": c2 = "green"; break;
+                        case "blue": c2 = "purple"; img2 = "imgs/acelerador.png";break;
+                        case "gray": c2 = "blue"; img2 = "imgs/nadador.png";break;
+                        case "purple": c2 = "gray"; img2 = "imgs/bloque1.png" ;break;
                     }
                     disparo = false;
                 }
                 break;
             case 3:
                 switch (superficie.color){
-                    case "green": 
+                    case "gray": 
                     this.rebotar(superficie, lado,this);
                     if (this.color == "blue" ){disparo = false;}
                     break;

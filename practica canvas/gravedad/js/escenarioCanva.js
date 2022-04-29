@@ -12,8 +12,9 @@ var retraso = 0;
 
 // VARIABLES DE COLOR
 var c0 = "white";
-var c1 = "green";
-var c2 = "blue";
+var c1 = "gray";
+var c2 = "gray";
+var img2 = "imgs/bloque1.png"
 
 function generarEscenario(capa, tipo, ancho, alto, lista)
 {	
