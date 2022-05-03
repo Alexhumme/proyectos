@@ -5,14 +5,14 @@ var disparo = false;
 
 function generarProyectiles(){
     for (let i=0 ; i< Cpro; i++){
-        proyectiles.push( new elemento(3,3, proX, proY, true, "jugador", "",0,0,1,9999, "blue"))
+        proyectiles.push( new elemento(3,3, proX, proY, true, "proyectil", "",0,0,1,9999, "blue"))
     }
 }
 function dibujarProjectiles(){
     for (let proyectil of proyectiles){
         if (disparo == false){
-            proX = elementoC.x;
-            proY = elementoC.y;
+            proX = elementoC.x-2;
+            proY = elementoC.y-9;
             proyectil.x = proX;
             proyectil.y = proY;
         }else{

@@ -4,11 +4,11 @@ var parar;
 var fps = 0, segundo = 0, conteoFrames = 0;
 
 function iniciarJuegoC(){
-    elementoC = new elemento(7.5, 7.5, 70, 70, false, "jugador", "", 0.5, 0.1, 0.6, 20, "yellow");
+    elementoC = new elemento(7, 7, 38, 210, false, "personaje","jugador", 0.5, 0.5, 0.2, 40, "yellow");
     proX=elementoC.x; proY=elementoC.y;
     juegoCanva.iniciarArea(); 
     generarProyectiles();
-    generarEscenario(capa3,"jugador",8,8,enemigos);
+    generarEscenario(capa3,"personaje",8,8,enemigos);
 }
 function detectoresDeEventos(){
     document.addEventListener("keydown", (e)=>{
@@ -43,10 +43,17 @@ var juegoCanva = {
 
 function acelerarX(n){
     if (elementoC.velx + n <= 2 && elementoC.velx + n >= -2){elementoC.velx += n;}
+    if (n>0 && elementoC.saltar){jugadorIMG=jugadorIMGs[0]}
+    if (n<0 && elementoC.saltar){jugadorIMG=jugadorIMGs[2]}
 }
 function acelerarY(n){
     if (n<0){ 
-        if (elementoC.saltar){ elementoC.gravedad = n;}
+        if (elementoC.saltar){
+            elementoC.gravedad = n;
+            if(elementoC.velx > 0){jugadorIMG=jugadorIMGs[1];}
+            if(elementoC.velx < 0){jugadorIMG=jugadorIMGs[3];}
+            
+        }
     } else {
         elementoC.gravedad = n;
     }
@@ -69,7 +76,7 @@ function consultarFrames(){
 
     juegoCanva.ctx.font = "bold 6pt sans-serif";
     juegoCanva.ctx.fillStyle = "red";
-    juegoCanva.ctx.fillText("FPS: "+ fps+ " || velocidad: "+ elementoC.velx + " || greavedad: " + elementoC.velGravedad + " || limite X: "+ limx + " || limite Y: " + limy, 10, 10)
+    juegoCanva.ctx.fillText("FPS: "+ fps + " || limite X: "+ limx + " || limite Y: " + limy, 10, 10)
 }
 function actualizarJuegoC(){
     juegoCanva.limpiar();
@@ -82,6 +89,4 @@ function actualizarJuegoC(){
     elementoC.dibujar();
     proyectiles[0].mover();
     dibujarProjectiles();
-    
-
 }
