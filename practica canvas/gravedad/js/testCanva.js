@@ -82,7 +82,7 @@ function consultarFrames(){
 
     juegoCanva.ctx.font = "bold 6pt sans-serif";
     juegoCanva.ctx.fillStyle = "red";
-    juegoCanva.ctx.fillText("FPS: "+ fps + " || limite X: "+ limx + " || limite Y: " + limy, 10, 10)
+    juegoCanva.ctx.fillText("FPS: "+ fps + " || limite X: "+ limx + " || limite Y: " + limy, juegoCanva.canva.width/2, 10)
 }
 function comprobarFragmentos(thise,accion){
     if( thise.x>elementoC.x-200 &&
