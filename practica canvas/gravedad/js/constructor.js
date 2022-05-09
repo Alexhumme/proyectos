@@ -169,11 +169,11 @@ function elemento(ancho, alto, x, y, saltar, tipo, subTipo, gravedad, friccion, 
                 break;
             case 5:
                 this.rebotar(superficie, lado, this);
-                switch(this.subTipo){
+                /*switch(this.subTipo){
                     case "jugador":
                         superficie.conteo--;
-                        if (superficie.conteo > 0){proyectiles=1;}
-                }
+                        if (superficie.conteo > 0){*/proyectiles=1;//}
+                //}
                 
                 break;
             case 6:
