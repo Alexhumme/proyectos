@@ -20,7 +20,7 @@ function generarEscenario(capa, tipo, ancho, alto, lista)
 {	
 	for (let y=0; y < capa.length; y++)
     {
-		xb = 0//- retraso;
+		xb = 0 - retraso;
 		for (let x =0; x < capa[y].length; x++)
         {
             if (capa[y][x] != N){
@@ -36,12 +36,12 @@ function generarEscenario(capa, tipo, ancho, alto, lista)
                 lista.push( new elemento(ancho, alto, xb, yb, false, tipo, capa[y][x], 0.5, 0.5,0.5, 50, c) );
             }
             
-			xb += 15
+			xb += 15;
 		}
-		yb += 15
+		yb += 15;
 	}
-	xb = retraso;
-	yb = 0
+	xb = 0;
+	yb = 0;
     for (bloque of lista){
         bloque.dibujar();
     }

@@ -1,35 +1,36 @@
-var proyectiles = [];
+var proyectiles = 0; var proyectil;
 var Cpro = 5;
 var proX, proY;
 var disparo = false;
 
 function generarProyectiles(){
-    for (let i=0 ; i< Cpro; i++){
-        proyectiles.push( new elemento(3,3, proX, proY, true, "proyectil", "",0,0,1,9999, "blue"))
-    }
+    /*if (proyectiles>=1){*/proyectil = new elemento(3,3, proX, proY, true, "proyectil", "",0,0,1,9999, "blue");/*}*/
 }
 function dibujarProjectiles(){
-    for (let proyectil of proyectiles){
+    if (proyectiles>=1){
         if (disparo == false){
             proX = elementoC.x-2;
             proY = elementoC.y-9;
             proyectil.x = proX;
             proyectil.y = proY;
         }else{
-            proX = proyectiles[0].x;
-            proY = proyectiles[0].y;
+            proX = proyectil.x;
+            proY = proyectil.y;
             proyectil.x = proX;
             proyectil.y = proY;
         }
         proyectil.dibujar();
+        proyectil.mover();
     }
 }
 function disparar(x, y){
-    let x1 = x-elementoC.x, y1 = y-elementoC.y;
-    let n = (((x1**(2))+(y1**(2)))/150)**(1/2);
-    let x2 = (x1/n), y2 = (y1/n);
-    disparo = true;
+    if (proyectiles>=1){
+        let x1 = x-elementoC.x, y1 = y-elementoC.y;
+        let n = (((x1**(2))+(y1**(2)))/150)**(1/2);
+        let x2 = (x1/n), y2 = (y1/n);
+        disparo = true;
 
-    proyectiles[0].velx = x2;
-    proyectiles[0].velGravedad = y2;
+        proyectil.velx = x2;
+        proyectil.velGravedad = y2;
+    }
 }

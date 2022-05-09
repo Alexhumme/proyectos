@@ -1,16 +1,21 @@
-var elementoC;
+var elementoC, cursor;
 var bloques = [];
 var parar;
 var fps = 0, segundo = 0, conteoFrames = 0;
 
 function iniciarJuegoC(){
     elementoC = new elemento(7, 7, 38, 210, false, "personaje","jugador", 0.5, 0.5, 0.2, 40, "yellow");
+    cursor = new elemento(15,15,0,0,false,"cursor","",0,0,0,0,"");
     proX=elementoC.x; proY=elementoC.y;
     juegoCanva.iniciarArea(); 
     generarProyectiles();
     generarEscenario(capa3,"personaje",8,8,enemigos);
 }
 function detectoresDeEventos(){
+    document.addEventListener("mousemove", (e)=>{
+        cursor.x = e.x-juegoCanva.canva.offsetLeft;
+        cursor.y = e.y-juegoCanva.canva.offsetTop;
+    }, false);
     document.addEventListener("keydown", (e)=>{
         juegoCanva.teclas = (juegoCanva.teclas || []);
         juegoCanva.teclas[e.keyCode] = true;
@@ -29,6 +34,7 @@ function detectoresDeEventos(){
 var juegoCanva = {
     canva : document.getElementById("testCanva"),
     iniciarArea : function(){
+        this.canva.style.cursor = "none";
         this.canva.width = 600;
         this.canva.height = 250;
         this.ctx = this.canva.getContext("2d");
@@ -78,15 +84,22 @@ function consultarFrames(){
     juegoCanva.ctx.fillStyle = "red";
     juegoCanva.ctx.fillText("FPS: "+ fps + " || limite X: "+ limx + " || limite Y: " + limy, 10, 10)
 }
+function comprobarFragmentos(thise,accion){
+    if( thise.x>elementoC.x-200 &&
+        thise.x<elementoC.x+200 &&
+        thise.y>elementoC.y-200 &&
+        thise.y<elementoC.y+200 ){
+            accion;
+        }
+}
 function actualizarJuegoC(){
     juegoCanva.limpiar();
     actCoordenadas();
     generarEscenario(nivel,"bloque",15,15,bloques);
-    generarEscenario(capa2,"jugador",3,3,bloques);
     moverEnemigos();
+    cursor.dibujar();
     consultarFrames();
     elementoC.mover();
     elementoC.dibujar();
-    proyectiles[0].mover();
     dibujarProjectiles();
 }

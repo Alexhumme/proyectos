@@ -19,19 +19,41 @@ function elemento(ancho, alto, x, y, saltar, tipo, subTipo, gravedad, friccion, 
     this.rebote = rebote;
     this.salto = this.y - salto;
     this.xd = 1;
+    this.conteo = 3;
     this.dibujar = function(){
         ctx = juegoCanva.ctx;
         switch (this.tipo) {
+            case "cursor":
+                this.img.src = "imgs/puntero.png";
+                ctx.drawImage(this.img,this.x,this.y);
+                break;
             case "bloque":
-            ctx.fillStyle = this.color;
-            ctx.fillRect(this.x,this.y,this.ancho,this.alto);
+            if( this.x>elementoC.x-200 &&
+                this.x<elementoC.x+200 &&
+                this.y>elementoC.y-200 &&
+                this.y<elementoC.y+200 ){
+                    ctx.fillStyle = this.color;
+                    ctx.fillRect(this.x,this.y,this.ancho,this.alto);
                 switch (this.subTipo){
                     //case 0: this.img.src = "imgs/fondo.png";break;
-                    //case 1: this.img.src = "imgs/bloque1.png";break;
+                    case 1: this.img.src = "imgs/bloque1.png";break;
                     case 2: this.img.src = "imgs/cambiador.png";break;
                     case 3: this.img.src = img2;break;
+                    case 5:
+                        ctx.fillStyle = this.color;
+                        ctx.fillRect(this.x,this.y,this.ancho,this.alto);    
+                        ctx.textAlign = "center";
+                        ctx.font = "bold 6pt sans-serif";
+                        ctx.fillStyle = "blue";
+                        ctx.fillText(this.conteo, this.x+this.ancho/2, this.y+this.alto/2);
+                    break;
+                    case 6: this.img.src = "imgs/tubo1.png";break;
+                    case 7: this.img.src = "imgs/tubo2.png";break;
+                    case 8: this.img.src = "imgs/parpadeante.gif";break;
                 }
                 ctx.drawImage(this.img,this.x,this.y);
+            }
+            
             break;
             case "proyectil":
                 this.img.src = "imgs/proyectil1.png";
@@ -53,6 +75,10 @@ function elemento(ancho, alto, x, y, saltar, tipo, subTipo, gravedad, friccion, 
                 case 4:
                 this.img.src = "imgs/enemigo.png";
                 break;
+                case 5:
+                    
+
+                    break;
             }
             ctx.drawImage(this.img,this.x-this.ancho,this.y-this.alto,this.ancho*2,this.alto*2);
             //
@@ -69,10 +95,9 @@ function elemento(ancho, alto, x, y, saltar, tipo, subTipo, gravedad, friccion, 
         // caer automaticamente
         if (this.y < this.salto){this.gravedad = 1}
         // casos de contacto
-        switch (this.subtipo){
-            case 4: this.velx += this.xd;
-        }
+        switch (this.subtipo){case 4: this.velx += this.xd;}
         casoContacto(this,bloques);
+        casoContacto(this,enemigos);
         reentrar(this);
     }
     this.rebotar = function(superficie, lado, esto){
@@ -135,13 +160,31 @@ function elemento(ancho, alto, x, y, saltar, tipo, subTipo, gravedad, friccion, 
                 }
                 break;
             case 4:
-                this.rebotar(superficie, lado, this);
-                superficie.rebotar(this,lado,superficie)
+                superficie.xd = -superficie.xd;
+                switch(this.subTipo){
+                    case "jugador":
+                        proyectiles=0;
+                }
+                
                 break;
-
             case 5:
                 this.rebotar(superficie, lado, this);
+                switch(this.subTipo){
+                    case "jugador":
+                        superficie.conteo--;
+                        if (superficie.conteo > 0){proyectiles=1;}
+                }
+                
                 break;
+            case 6:
+                this.rebotar(superficie, lado, this);
+                if (this.color == "blue" ){disparo = false;}
+                break;
+            case 7:
+                this.rebotar(superficie, lado, this);
+                if (this.color == "blue" ){disparo = false;}
+                break;
+            
             default: break;
         }
     }

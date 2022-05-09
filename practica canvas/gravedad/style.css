@@ -1,8 +1,13 @@
 body {
-    background-color: rgb(70, 13, 13);
+    background-color: lightblue;
 }
 h3{
-    margin:auto;
+    color: white;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color:cornflowerblue;
+    border: 1px solid white;
+    text-shadow: 10px;
 }
 #juego{
     align-content:center;
@@ -10,16 +15,16 @@ h3{
     grid-template-rows: auto;
     margin:auto;
     align-items: center;
-    background-color: antiquewhite;
+    background-color: lightblue;
+    background-image: url(imgs/bg.png);
     padding: 10px;
-    width: 650px;
-    height: 300px;
+    width: 680px;
+    height: 330px;
 }
 #testCanva{
-    border: 1px solid #747474 ;
     width: 600px;
     height: 250px;
-    background-color: aliceblue;
+    background-color: black;
 }
 .elemento{
     display:flex;
