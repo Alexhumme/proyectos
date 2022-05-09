@@ -28,10 +28,10 @@ function elemento(ancho, alto, x, y, saltar, tipo, subTipo, gravedad, friccion, 
                 ctx.drawImage(this.img,this.x,this.y);
                 break;
             case "bloque":
-            if( this.x>elementoC.x-200 &&
-                this.x<elementoC.x+200 &&
-                this.y>elementoC.y-200 &&
-                this.y<elementoC.y+200 ){
+            if( this.x>elementoC.x-100 &&
+                this.x<elementoC.x+100 &&
+                this.y>elementoC.y-100 &&
+                this.y<elementoC.y+100 ){
                     ctx.fillStyle = this.color;
                     ctx.fillRect(this.x,this.y,this.ancho,this.alto);
                 switch (this.subTipo){
@@ -43,9 +43,9 @@ function elemento(ancho, alto, x, y, saltar, tipo, subTipo, gravedad, friccion, 
                         ctx.fillStyle = this.color;
                         ctx.fillRect(this.x,this.y,this.ancho,this.alto);    
                         ctx.textAlign = "center";
-                        ctx.font = "bold 6pt sans-serif";
+                        ctx.font = "bold 8pt sans-serif";
                         ctx.fillStyle = "blue";
-                        ctx.fillText(this.conteo, this.x+this.ancho/2, this.y+this.alto/2);
+                        ctx.fillText(this.conteo, this.x+this.ancho/2, 3+this.y+this.alto/2);
                     break;
                     case 6: this.img.src = "imgs/tubo1.png";break;
                     case 7: this.img.src = "imgs/tubo2.png";break;

@@ -1,5 +1,5 @@
 var elementoC, cursor;
-var bloques = [];
+var bloques = [];var especiales = [];
 var parar;
 var fps = 0, segundo = 0, conteoFrames = 0;
 
@@ -9,6 +9,7 @@ function iniciarJuegoC(){
     proX=elementoC.x; proY=elementoC.y;
     juegoCanva.iniciarArea(); 
     generarProyectiles();
+    generarEscenario(capa2,"bloque",15,15,especiales);
     generarEscenario(capa3,"personaje",8,8,enemigos);
 }
 function detectoresDeEventos(){
