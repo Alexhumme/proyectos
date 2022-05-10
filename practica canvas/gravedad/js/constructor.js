@@ -28,12 +28,12 @@ function elemento(ancho, alto, x, y, saltar, tipo, subTipo, gravedad, friccion, 
                 ctx.drawImage(this.img,this.x,this.y);
                 break;
             case "bloque":
-            if( 
-                (((this.x-elementoC.x)**(2))+((this.y-elementoC.y)**(2)))**(1/2) > -fragmentos &&
+            if( (((this.x-elementoC.x)**(2))+((this.y-elementoC.y)**(2)))**(1/2) > -fragmentos &&
                 (((this.x-elementoC.x)**(2))+((this.y-elementoC.y)**(2)))**(1/2) < fragmentos &&
                 (((this.y-elementoC.y)**(2))+((this.y-elementoC.y)**(2)))**(1/2) > -fragmentos &&
                 (((this.y-elementoC.y)**(2))+((this.y-elementoC.y)**(2)))**(1/2) < fragmentos 
-                ){
+            )
+            {
                     ctx.fillStyle = this.color;
                     ctx.fillRect(this.x,this.y,this.ancho,this.alto);
                 switch (this.subTipo){
@@ -46,9 +46,10 @@ function elemento(ancho, alto, x, y, saltar, tipo, subTipo, gravedad, friccion, 
                         ctx.fillRect(this.x,this.y,this.ancho,this.alto);    
                         ctx.textAlign = "center";
                         ctx.font = "bold 8pt sans-serif";
-                        ctx.fillStyle = "blue";
+                        ctx.fillStyle = "white";
                         ctx.fillText(this.conteo, this.x+this.ancho/2, 3+this.y+this.alto/2);
-                    break;
+                        this.img.src = "imgs/bloque1.png";
+                        break;
                     case 6: this.img.src = "imgs/tubo1.png";break;
                     case 7: this.img.src = "imgs/tubo2.png";break;
                     case 8: this.img.src = "imgs/parpadeante.gif";break;

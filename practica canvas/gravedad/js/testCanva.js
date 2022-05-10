@@ -1,7 +1,7 @@
 var elementoC, cursor;
 var bloques = [];var especiales = [];
 var parar; 
-var fps = 0, segundo = 0, conteoFrames = 0, fragmentos = 100;
+var fps = 0, segundo = 0, conteoFrames = 0, fragmentos = 200;
 
 function iniciarJuegoC(){
     elementoC = new elemento(7, 7, 38, 210, false, "personaje","jugador", 0.5, 0.5, 0.2, 40, "yellow");
