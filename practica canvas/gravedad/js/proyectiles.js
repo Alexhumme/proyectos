@@ -19,7 +19,12 @@ function dibujarProjectiles(){
             proyectil.x = proX;
             proyectil.y = proY;
         }
-        proyectil.dibujar();
+        if( 
+            (((proyectil.x-elementoC.x)**(2))+((proyectil.y-elementoC.y)**(2)))**(1/2) > -fragmentos &&
+            (((proyectil.x-elementoC.x)**(2))+((proyectil.y-elementoC.y)**(2)))**(1/2) < fragmentos &&
+            (((proyectil.y-elementoC.y)**(2))+((proyectil.y-elementoC.y)**(2)))**(1/2) > -fragmentos &&
+            (((proyectil.y-elementoC.y)**(2))+((proyectil.y-elementoC.y)**(2)))**(1/2) < fragmentos 
+            ){proyectil.dibujar();}
         proyectil.mover();
     }
 }

@@ -28,10 +28,12 @@ function elemento(ancho, alto, x, y, saltar, tipo, subTipo, gravedad, friccion, 
                 ctx.drawImage(this.img,this.x,this.y);
                 break;
             case "bloque":
-            if( this.x>elementoC.x-100 &&
-                this.x<elementoC.x+100 &&
-                this.y>elementoC.y-100 &&
-                this.y<elementoC.y+100 ){
+            if( 
+                (((this.x-elementoC.x)**(2))+((this.y-elementoC.y)**(2)))**(1/2) > -fragmentos &&
+                (((this.x-elementoC.x)**(2))+((this.y-elementoC.y)**(2)))**(1/2) < fragmentos &&
+                (((this.y-elementoC.y)**(2))+((this.y-elementoC.y)**(2)))**(1/2) > -fragmentos &&
+                (((this.y-elementoC.y)**(2))+((this.y-elementoC.y)**(2)))**(1/2) < fragmentos 
+                ){
                     ctx.fillStyle = this.color;
                     ctx.fillRect(this.x,this.y,this.ancho,this.alto);
                 switch (this.subTipo){
