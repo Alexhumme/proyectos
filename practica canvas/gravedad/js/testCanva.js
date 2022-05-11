@@ -1,16 +1,16 @@
 var elementoC, cursor;
 var bloques = [];var especiales = [];
 var parar; 
-var fps = 0, segundo = 0, conteoFrames = 0, fragmentos = 200;
+var fps = 0, segundo = 0, conteoFrames = 0, fragmentos = 100;
 
 function iniciarJuegoC(){
-    elementoC = new elemento(7, 7, 38, 210, false, "personaje","jugador", 0.5, 0.5, 0.2, 40, "yellow");
+    elementoC = new elemento(10, 10, 38, 210, false, "personaje","jugador", 0.5, 0.5, 0.2, 40, "yellow");
     cursor = new elemento(15,15,0,0,false,"cursor","",0,0,0,0,"");
     proX=elementoC.x; proY=elementoC.y;
     juegoCanva.iniciarArea(); 
     generarProyectiles();
     generarEscenario(capa2,"bloque",15,15,especiales);
-    generarEscenario(capa3,"personaje",8,8,enemigos);
+    generarEscenario(capa3,"personaje",7,7,enemigos);
 }
 function detectoresDeEventos(){
     document.addEventListener("mousemove", (e)=>{
@@ -35,6 +35,7 @@ function detectoresDeEventos(){
 var juegoCanva = {
     canva : document.getElementById("testCanva"),
     iniciarArea : function(){
+        this.canva.style.backgroundColor = "#222034";
         this.canva.style.cursor = "none";
         this.canva.width = 600;
         this.canva.height = 250;
@@ -70,6 +71,12 @@ function actCoordenadas(){
         if (juegoCanva.teclas[65]){acelerarX(-0.1); retraso+=elementoC.velx}
         if (juegoCanva.teclas[68]){acelerarX(0.1); retraso+=elementoC.velx}
         if (juegoCanva.teclas[87]){acelerarY(-0.8); elementoC.saltar = false;}
+        if (juegoCanva.teclas[66]){elementoC.alto = 10;}
+    }
+}
+function reducirFragmentos(){
+    if (fragmentos>=-1){
+        fragmentos=fragmentos*0.99;
     }
 }
 function consultarFrames(){
@@ -85,22 +92,16 @@ function consultarFrames(){
     juegoCanva.ctx.fillStyle = "red";
     juegoCanva.ctx.fillText("FPS: "+ fps + " || limite X: "+ limx + " || limite Y: " + limy, juegoCanva.canva.width/2, 10)
 }
-function comprobarFragmentos(thise,accion){
-    if( thise.x>elementoC.x-200 &&
-        thise.x<elementoC.x+200 &&
-        thise.y>elementoC.y-200 &&
-        thise.y<elementoC.y+200 ){
-            accion;
-        }
-}
+
 function actualizarJuegoC(){
     juegoCanva.limpiar();
     actCoordenadas();
     generarEscenario(nivel,"bloque",15,15,bloques);
+    reducirFragmentos();
     moverEnemigos();
     cursor.dibujar();
     consultarFrames();
+    dibujarProjectiles();
     elementoC.mover();
     elementoC.dibujar();
-    dibujarProjectiles();
 }

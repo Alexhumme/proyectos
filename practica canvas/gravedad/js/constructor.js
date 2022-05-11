@@ -22,20 +22,22 @@ function elemento(ancho, alto, x, y, saltar, tipo, subTipo, gravedad, friccion, 
     this.conteo = 3;
     this.dibujar = function(){
         ctx = juegoCanva.ctx;
+        if (this.subTipo == 8){this.img.src = "imgs/fuente.png";ctx.drawImage(this.img,this.x,this.y);}
         switch (this.tipo) {
             case "cursor":
                 this.img.src = "imgs/puntero.png";
                 ctx.drawImage(this.img,this.x,this.y);
                 break;
+            
             case "bloque":
             if( (((this.x-elementoC.x)**(2))+((this.y-elementoC.y)**(2)))**(1/2) > -fragmentos &&
                 (((this.x-elementoC.x)**(2))+((this.y-elementoC.y)**(2)))**(1/2) < fragmentos &&
                 (((this.y-elementoC.y)**(2))+((this.y-elementoC.y)**(2)))**(1/2) > -fragmentos &&
                 (((this.y-elementoC.y)**(2))+((this.y-elementoC.y)**(2)))**(1/2) < fragmentos 
             )
-            {
-                    ctx.fillStyle = this.color;
-                    ctx.fillRect(this.x,this.y,this.ancho,this.alto);
+            {   
+                ctx.fillStyle = this.color;
+                ctx.fillRect(this.x,this.y,this.ancho,this.alto);
                 switch (this.subTipo){
                     //case 0: this.img.src = "imgs/fondo.png";break;
                     case 1: this.img.src = "imgs/bloque1.png";break;
@@ -52,8 +54,9 @@ function elemento(ancho, alto, x, y, saltar, tipo, subTipo, gravedad, friccion, 
                         break;
                     case 6: this.img.src = "imgs/tubo1.png";break;
                     case 7: this.img.src = "imgs/tubo2.png";break;
-                    case 8: this.img.src = "imgs/parpadeante.gif";break;
+                    case 8: this.img.src = "imgs/fuente.png";break;
                 }
+                
                 ctx.drawImage(this.img,this.x,this.y);
             }
             
@@ -76,7 +79,7 @@ function elemento(ancho, alto, x, y, saltar, tipo, subTipo, gravedad, friccion, 
                 this.img.src = jugadorIMG;
                 break;
                 case 4:
-                this.img.src = "imgs/enemigo.png";
+                //this.img.src = "imgs/enemigo.png";
                 break;
                 case 5:
                     
@@ -187,7 +190,8 @@ function elemento(ancho, alto, x, y, saltar, tipo, subTipo, gravedad, friccion, 
                 this.rebotar(superficie, lado, this);
                 if (this.color == "blue" ){disparo = false;}
                 break;
-            
+            case 8:
+                fragmentos = 200;
             default: break;
         }
     }
