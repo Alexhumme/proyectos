@@ -1,4 +1,4 @@
-var jugadorIMGs = ["imgs/jugador1.png","imgs/jugador2.png","imgs/jugador3.png","imgs/jugador4.png"];
+var jugadorIMGs = ["imgs/jugador1_2.png","imgs/jugador2_2.png","imgs/jugador2_2.png","imgs/jugador1_2.png"];
 var jugadorIMG = jugadorIMGs[0];
 function elemento(ancho, alto, x, y, saltar, tipo, subTipo, gravedad, friccion, rebote, salto,color){
     this.img=new Image();
@@ -37,23 +37,23 @@ function elemento(ancho, alto, x, y, saltar, tipo, subTipo, gravedad, friccion, 
             )
             {   
                 ctx.fillStyle = this.color;
-                ctx.fillRect(this.x,this.y,this.ancho,this.alto);
+                
                 switch (this.subTipo){
-                    //case 0: this.img.src = "imgs/fondo.png";break;
-                    case 1: this.img.src = "imgs/bloque1.png";break;
-                    case 2: this.img.src = "imgs/cambiador.png";break;
+                    case 0: ctx.fillRect(this.x+1,this.y+1,this.ancho-1,this.alto-1);/*this.img.src = "imgs/fondo.png";*/break;
+                    case 1: this.img.src = "imgs/bloque1_2.png";break;
+                    case 2: ctx.fillRect(this.x+3,this.y+3,this.ancho-3,this.alto-3);this.img.src = "imgs/cambiador2.png";break;
                     case 3: this.img.src = img2;break;
                     case 5:
                         ctx.fillStyle = this.color;
-                        ctx.fillRect(this.x,this.y,this.ancho,this.alto);    
+                        //ctx.fillRect(this.x,this.y,this.ancho,this.alto);    
                         ctx.textAlign = "center";
-                        ctx.font = "bold 8pt sans-serif";
+                        ctx.font = "bold 7pt sans-serif";
                         ctx.fillStyle = "white";
-                        ctx.fillText(this.conteo, this.x+this.ancho/2, 3+this.y+this.alto/2);
-                        this.img.src = "imgs/bloque1.png";
+                        ctx.fillText(this.conteo, 1+this.x+this.ancho/2, 4+this.y+this.alto/2);
+                        this.img.src = "imgs/municion.png";
                         break;
-                    case 6: this.img.src = "imgs/tubo1.png";break;
-                    case 7: this.img.src = "imgs/tubo2.png";break;
+                    case 6: this.img.src = "imgs/tubo1_2.png";break;
+                    case 7: this.img.src = "imgs/tubo2_2.png";break;
                     case 8: this.img.src = "imgs/fuente.png";break;
                 }
                 
@@ -61,28 +61,32 @@ function elemento(ancho, alto, x, y, saltar, tipo, subTipo, gravedad, friccion, 
             }
             
             break;
+            case "luzBar":
+                this.img.src = "imgs/fuente.png";
+                ctx.drawImage(this.img,this.x-10,this.y, 10,10);
+                ctx.strokeStyle= "white";
+                ctx.strokeRect(this.x,this.y,200,this.alto);
+                ctx.fillStyle = this.color;
+                ctx.fillRect(this.x,this.y,this.ancho,this.alto);
+                break;
             case "proyectil":
                 this.img.src = "imgs/proyectil1.png";
                 ctx.drawImage(this.img,this.x,this.y);
             break
             case "personaje":
-            // dibujar jugador
-            /*
-            ctx.save();
-            ctx.translate(this.x,this.y);
-            ctx.rotate(this.angulo); //para girar, rotamos toda la canva guardando y restaurando su estado anterior, de esta manera debemos declarar que el circulo se encuentra en el 0,0 y sera entonces lo unico que gire
-            
-            ctx.restore();
-            */
             switch (this.subTipo){
                 case "jugador": 
                 this.img.src = jugadorIMG;
+                let vidas = new Image();
+                vidas.src = "imgs/vida.png";
+                for (let i = 0; i<this.conteo; i++){
+                    ctx.drawImage(vidas,(10*i)+10,20);
+                }
                 break;
                 case 4:
                 //this.img.src = "imgs/enemigo.png";
                 break;
-                case 5:
-                    
+                case 5://dado que no podra disminuir las municiones siendo tipo bloque
 
                     break;
             }
@@ -147,29 +151,34 @@ function elemento(ancho, alto, x, y, saltar, tipo, subTipo, gravedad, friccion, 
                 this.rebotar(superficie,lado,this);
                 switch (superficie.color){
                     case "blue": c2 = "purple"; img2 = "imgs/acelerador.png";break;
-                    case "gray": c2 = "blue"; img2 = "imgs/nadador.png";break;
-                    case "purple": c2 = "gray"; img2 = "imgs/bloque1.png" ;break;
+                    case "cyan": c2 = "blue"; img2 = "imgs/nadador.png";break;
+                    case "purple": c2 = "cyan"; img2 = "imgs/bloque1_2.png" ;break;
                 }
                 if (this.color == "blue" ){disparo = false;}
                 break;
             case 3:
                 switch (superficie.color){
-                    case "gray": 
+                    case "cyan": 
                     this.rebotar(superficie, lado,this);
                     if (this.color == "blue" ){disparo = false;}
                     break;
                     case "blue":
+                    this.gravedad -= 0.5;
                     this.saltar = true;
                     break;
                     case "purple":
-                        this.velx += 1;
+                    this.velx += 1;
+                    break;
                 }
                 break;
             case 4:
                 superficie.xd = -superficie.xd;
+                
                 switch(this.subTipo){
                     case "jugador":
                         proyectiles=0;
+                        fragmentos =0;
+                        this.conteo--;
                 }
                 
                 break;
@@ -191,6 +200,8 @@ function elemento(ancho, alto, x, y, saltar, tipo, subTipo, gravedad, friccion, 
                 if (this.color == "blue" ){disparo = false;}
                 break;
             case 8:
+                this.rebotar(superficie, lado, this);
+                if (this.color == "blue" ){disparo = false;}
                 fragmentos = 200;
             default: break;
         }

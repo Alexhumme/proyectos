@@ -1,10 +1,11 @@
-var elementoC, cursor;
+var elementoC, cursor, luz;
 var bloques = [];var especiales = [];
 var parar; 
 var fps = 0, segundo = 0, conteoFrames = 0, fragmentos = 100;
 
 function iniciarJuegoC(){
-    elementoC = new elemento(10, 10, 38, 210, false, "personaje","jugador", 0.5, 0.5, 0.2, 40, "yellow");
+    luz = new elemento(10, 10, 20, 2, false, "luzBar","", 0.5, 0.5, 0.2, 40, "cyan");
+    elementoC = new elemento(10, 10, 38, 210, false, "personaje","jugador", 0.5, 0.2, 0.2, 40, "yellow");
     cursor = new elemento(15,15,0,0,false,"cursor","",0,0,0,0,"");
     proX=elementoC.x; proY=elementoC.y;
     juegoCanva.iniciarArea(); 
@@ -35,12 +36,12 @@ function detectoresDeEventos(){
 var juegoCanva = {
     canva : document.getElementById("testCanva"),
     iniciarArea : function(){
-        this.canva.style.backgroundColor = "#222034";
+        this.canva.style.backgroundColor = "black";
         this.canva.style.cursor = "none";
         this.canva.width = 600;
         this.canva.height = 250;
         this.ctx = this.canva.getContext("2d");
-        this.intervalo = window.setInterval(actualizarJuegoC, 20);
+        this.intervalo = window.setInterval(actualizarJuegoC, 35);
         detectoresDeEventos();
     },
     limpiar : function(){
@@ -52,14 +53,15 @@ var juegoCanva = {
 function acelerarX(n){
     if (elementoC.velx + n <= 2 && elementoC.velx + n >= -2){elementoC.velx += n;}
     if (n>0 && elementoC.saltar){jugadorIMG=jugadorIMGs[0]}
-    if (n<0 && elementoC.saltar){jugadorIMG=jugadorIMGs[2]}
+    if (n<0 && elementoC.saltar){jugadorIMG=jugadorIMGs[1]}
 }
 function acelerarY(n){
     if (n<0){ 
         if (elementoC.saltar){
             elementoC.gravedad = n;
-            if(elementoC.velx > 0){jugadorIMG=jugadorIMGs[1];}
-            if(elementoC.velx < 0){jugadorIMG=jugadorIMGs[3];}
+            
+            if(elementoC.velx > 0){jugadorIMG=jugadorIMGs[3];}
+            if(elementoC.velx < 0){jugadorIMG=jugadorIMGs[2];}
             
         }
     } else {
@@ -75,8 +77,8 @@ function actCoordenadas(){
     }
 }
 function reducirFragmentos(){
-    if (fragmentos>=-1){
-        fragmentos=fragmentos*0.99;
+    if (fragmentos>0){
+        fragmentos=fragmentos*0.993;
     }
 }
 function consultarFrames(){
@@ -90,13 +92,14 @@ function consultarFrames(){
 
     juegoCanva.ctx.font = "bold 6pt sans-serif";
     juegoCanva.ctx.fillStyle = "red";
+    juegoCanva.ctx.textAlign = "center"
     juegoCanva.ctx.fillText("FPS: "+ fps + " || limite X: "+ limx + " || limite Y: " + limy, juegoCanva.canva.width/2, 10)
 }
 
 function actualizarJuegoC(){
     juegoCanva.limpiar();
     actCoordenadas();
-    generarEscenario(nivel,"bloque",15,15,bloques);
+    generarEscenario(nivel,"bloque",14,14,bloques);
     reducirFragmentos();
     moverEnemigos();
     cursor.dibujar();
@@ -104,4 +107,6 @@ function actualizarJuegoC(){
     dibujarProjectiles();
     elementoC.mover();
     elementoC.dibujar();
+    luz.ancho = fragmentos;
+    luz.dibujar();
 }
