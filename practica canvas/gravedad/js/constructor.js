@@ -1,4 +1,4 @@
-var jugadorIMGs = ["imgs/jugador1_2.png","imgs/jugador2_2.png","imgs/jugador2_2.png","imgs/jugador1_2.png"];
+var jugadorIMGs = ["imgs/jugador1_2.png","imgs/jugador2_2.png","imgs/jugador2_2.png","imgs/jugador1_2.png", "imgs/jugador1_2Dark.png","imgs/jugador2_2Dark.png"];
 var jugadorIMG = jugadorIMGs[0];
 function elemento(ancho, alto, x, y, saltar, tipo, subTipo, gravedad, friccion, rebote, salto,color){
     this.img=new Image();
@@ -26,7 +26,7 @@ function elemento(ancho, alto, x, y, saltar, tipo, subTipo, gravedad, friccion, 
         switch (this.tipo) {
             case "cursor":
                 this.img.src = "imgs/puntero.png";
-                ctx.drawImage(this.img,this.x,this.y);
+                ctx.drawImage(this.img,this.x,this.y-10);
                 break;
             
             case "bloque":
@@ -57,6 +57,9 @@ function elemento(ancho, alto, x, y, saltar, tipo, subTipo, gravedad, friccion, 
                     case 8: this.img.src = "imgs/fuente.png";break;
                 }
                 
+                ctx.drawImage(this.img,this.x,this.y);
+            }else if(comprobarFragmentos(40,this,elementoC) && (this.subTipo!=0 && this.subTipo!=8)){
+                this.img.src = "imgs/bloqueDark.png";
                 ctx.drawImage(this.img,this.x,this.y);
             }
             
@@ -115,7 +118,7 @@ function elemento(ancho, alto, x, y, saltar, tipo, subTipo, gravedad, friccion, 
                 {
                     case "up":
                         //console.log("up");
-                        if (esto.color != "lue"){esto.salto = esto.y - 30;}
+                        if (esto.color != "blue"){esto.salto = esto.y - 30;}
                         esto.saltar = true;
                         esto.y = superficie.y-esto.alto;
                         esto.velGravedad = -(esto.velGravedad*esto.rebote);

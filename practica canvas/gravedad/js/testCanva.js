@@ -5,13 +5,13 @@ var fps = 0, segundo = 0, conteoFrames = 0, fragmentos = 100;
 
 function iniciarJuegoC(){
     luz = new elemento(10, 10, 20, 2, false, "luzBar","", 0.5, 0.5, 0.2, 40, "cyan");
-    elementoC = new elemento(10, 10, 38, 210, false, "personaje","jugador", 0.5, 0.2, 0.2, 40, "yellow");
+    elementoC = new elemento(7.5, 10, 38, 210, false, "personaje","jugador", 0.5, 0.2, 0.2, 40, "yellow");
     cursor = new elemento(15,15,0,0,false,"cursor","",0,0,0,0,"");
     proX=elementoC.x; proY=elementoC.y;
     juegoCanva.iniciarArea(); 
     generarProyectiles();
     generarEscenario(capa2,"bloque",15,15,especiales);
-    generarEscenario(capa3,"personaje",7,7,enemigos);
+    generarEscenario(capa3,"personaje",10,10,enemigos);
 }
 function detectoresDeEventos(){
     document.addEventListener("mousemove", (e)=>{
@@ -52,16 +52,16 @@ var juegoCanva = {
 
 function acelerarX(n){
     if (elementoC.velx + n <= 2 && elementoC.velx + n >= -2){elementoC.velx += n;}
-    if (n>0 && elementoC.saltar){jugadorIMG=jugadorIMGs[0]}
-    if (n<0 && elementoC.saltar){jugadorIMG=jugadorIMGs[1]}
+    if (n>0 && elementoC.saltar){if(fragmentos>15){jugadorIMG=jugadorIMGs[3];}else{jugadorIMG=jugadorIMGs[4];}}
+    if (n<0 && elementoC.saltar){if(fragmentos>15){jugadorIMG=jugadorIMGs[2];}else{jugadorIMG=jugadorIMGs[5];}}
 }
 function acelerarY(n){
     if (n<0){ 
         if (elementoC.saltar){
             elementoC.gravedad = n;
             
-            if(elementoC.velx > 0){jugadorIMG=jugadorIMGs[3];}
-            if(elementoC.velx < 0){jugadorIMG=jugadorIMGs[2];}
+            if(elementoC.velx > 0){if(fragmentos>15){jugadorIMG=jugadorIMGs[3];}else{jugadorIMG=jugadorIMGs[4];}}
+            if(elementoC.velx < 0){if(fragmentos>15){jugadorIMG=jugadorIMGs[2];}else{jugadorIMG=jugadorIMGs[5];}}
             
         }
     } else {
@@ -78,8 +78,15 @@ function actCoordenadas(){
 }
 function reducirFragmentos(){
     if (fragmentos>0){
-        fragmentos=fragmentos*0.993;
+        fragmentos-=0.3;
     }
+}
+function comprobarFragmentos(pix, objeto, centro){
+    if( (((objeto.x-centro.x)**(2))+((objeto.y-centro.y)**(2)))**(1/2) > -pix &&
+        (((objeto.x-centro.x)**(2))+((objeto.y-centro.y)**(2)))**(1/2) < pix &&
+        (((objeto.y-centro.y)**(2))+((objeto.y-centro.y)**(2)))**(1/2) > -pix*1.4 &&
+        (((objeto.y-centro.y)**(2))+((objeto.y-centro.y)**(2)))**(1/2) < pix*1.4
+    ){return true }else{return false}
 }
 function consultarFrames(){
     var seg = Math.floor(Date.now()/1000);

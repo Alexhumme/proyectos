@@ -10,7 +10,7 @@ function dibujarProjectiles(){
     if (proyectiles>=1){
         if (disparo == false){
             proX = elementoC.x-2;
-            proY = elementoC.y-9;
+            proY = elementoC.y-20;
             proyectil.x = proX;
             proyectil.y = proY;
         }else{
@@ -19,12 +19,7 @@ function dibujarProjectiles(){
             proyectil.x = proX;
             proyectil.y = proY;
         }
-        if( 
-            (((proyectil.x-elementoC.x)**(2))+((proyectil.y-elementoC.y)**(2)))**(1/2) > -fragmentos &&
-            (((proyectil.x-elementoC.x)**(2))+((proyectil.y-elementoC.y)**(2)))**(1/2) < fragmentos &&
-            (((proyectil.y-elementoC.y)**(2))+((proyectil.y-elementoC.y)**(2)))**(1/2) > -fragmentos &&
-            (((proyectil.y-elementoC.y)**(2))+((proyectil.y-elementoC.y)**(2)))**(1/2) < fragmentos 
-            ){proyectil.dibujar();}
+        proyectil.dibujar();
         proyectil.mover();
     }
 }

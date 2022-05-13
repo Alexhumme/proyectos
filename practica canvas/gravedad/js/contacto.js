@@ -11,6 +11,6 @@ function casoContacto(char, lista){
                 if (char.y+char.alto > pared.y && char.y+char.alto < pared.y+pared.alto && char.y-char.alto < pared.y){char.contacto(pared, "up")}
                 if (char.y-char.alto < pared.y+pared.alto && char.y-char.alto > pared.y && char.y+char.alto > pared.y+pared.alto){char.contacto(pared, "down")}
             } 
-        
+    
     }
 }
