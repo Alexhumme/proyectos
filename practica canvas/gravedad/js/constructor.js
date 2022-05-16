@@ -58,8 +58,14 @@ function elemento(ancho, alto, x, y, saltar, tipo, subTipo, gravedad, friccion, 
                 }
                 
                 ctx.drawImage(this.img,this.x,this.y);
-            }else if(comprobarFragmentos(40,this,elementoC) && (this.subTipo!=0 && this.subTipo!=8)){
-                this.img.src = "imgs/bloqueDark.png";
+            }else if(comprobarFragmentos(40,this,elementoC)){
+                switch(this.subTipo){
+                    case 0: break;
+                    case 5: this.img.src = "imgs/municion.png"; break;
+                    case 8: this.img.src = "imgs/fuente.png";break;
+                    default: this.img.src = "imgs/bloqueDark.png";break
+                }
+                
                 ctx.drawImage(this.img,this.x,this.y);
             }
             
@@ -85,15 +91,17 @@ function elemento(ancho, alto, x, y, saltar, tipo, subTipo, gravedad, friccion, 
                 for (let i = 0; i<this.conteo; i++){
                     ctx.drawImage(vidas,(10*i)+10,20);
                 }
+                ctx.drawImage(this.img,this.x-this.ancho,this.y-this.alto,this.ancho*2,this.alto*2);
                 break;
                 case 4:
-                //this.img.src = "imgs/enemigo.png";
+                this.img.src = enemigoIMG;
+                ctx.drawImage(this.img,this.x,this.y,this.ancho,this.alto);
                 break;
                 case 5://dado que no podra disminuir las municiones siendo tipo bloque
 
                     break;
             }
-            ctx.drawImage(this.img,this.x-this.ancho,this.y-this.alto,this.ancho*2,this.alto*2);
+            
             //
             break;
         }
@@ -179,8 +187,9 @@ function elemento(ancho, alto, x, y, saltar, tipo, subTipo, gravedad, friccion, 
                 
                 switch(this.subTipo){
                     case "jugador":
+                        this.rebotar(superficie, lado,this);
                         proyectiles=0;
-                        fragmentos =0;
+                        fragmentos =200;
                         this.conteo--;
                 }
                 

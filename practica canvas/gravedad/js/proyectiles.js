@@ -10,7 +10,7 @@ function dibujarProjectiles(){
     if (proyectiles>=1){
         if (disparo == false){
             proX = elementoC.x-2;
-            proY = elementoC.y-20;
+            proY = elementoC.y-15;
             proyectil.x = proX;
             proyectil.y = proY;
         }else{

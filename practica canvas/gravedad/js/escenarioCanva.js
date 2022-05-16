@@ -14,7 +14,7 @@ var retraso = 0;
 var c0 = "#0B173B";
 var c1 = "cyan";
 var c2 = "cyan";
-var img2 = "imgs/bloque1.png"
+var img2 = "imgs/bloque1_2.png"
 
 function generarEscenario(capa, tipo, ancho, alto, lista)
 {	
