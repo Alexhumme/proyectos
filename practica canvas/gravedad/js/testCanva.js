@@ -78,7 +78,7 @@ function actCoordenadas(){
 }
 function reducirFragmentos(){
     if (fragmentos>0){
-        fragmentos-=0.3;
+        fragmentos-=0.4;
     }
 }
 function comprobarFragmentos(pix, objeto, centro){

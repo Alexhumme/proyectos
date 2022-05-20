@@ -41,7 +41,7 @@ function elemento(ancho, alto, x, y, saltar, tipo, subTipo, gravedad, friccion, 
                 switch (this.subTipo){
                     case 0: ctx.fillRect(this.x+1,this.y+1,this.ancho-1,this.alto-1);/*this.img.src = "imgs/fondo.png";*/break;
                     case 1: this.img.src = "imgs/bloque1_2.png";break;
-                    case 2: ctx.fillRect(this.x+3,this.y+3,this.ancho-3,this.alto-3);this.img.src = "imgs/cambiador2.png";break;
+                    case 2: this.img.src = cambSrc;break;
                     case 3: this.img.src = img2;break;
                     case 5:
                         ctx.fillStyle = this.color;
@@ -58,9 +58,11 @@ function elemento(ancho, alto, x, y, saltar, tipo, subTipo, gravedad, friccion, 
                 }
                 
                 ctx.drawImage(this.img,this.x,this.y);
-            }else if(comprobarFragmentos(40,this,elementoC)){
+            }else if(comprobarFragmentos(fragmentos+40,this,elementoC) || (comprobarFragmentos(30,this,proyectil))){
                 switch(this.subTipo){
                     case 0: break;
+                    case 2: this.img.src = cambSrc;break;
+                    case 3: this.img.src = img2;break;
                     case 5: this.img.src = "imgs/municion.png"; break;
                     case 8: this.img.src = "imgs/fuente.png";break;
                     default: this.img.src = "imgs/bloqueDark.png";break
@@ -161,9 +163,10 @@ function elemento(ancho, alto, x, y, saltar, tipo, subTipo, gravedad, friccion, 
             case 2:
                 this.rebotar(superficie,lado,this);
                 switch (superficie.color){
-                    case "blue": c2 = "purple"; img2 = "imgs/acelerador.png";break;
-                    case "cyan": c2 = "blue"; img2 = "imgs/nadador.png";break;
-                    case "purple": c2 = "cyan"; img2 = "imgs/bloque1_2.png" ;break;
+                    case "green": c2 = "purple";cambSrc = "imgs/cambiador2_C.png"; img2 = "imgs/acelerador_B.png";break;
+                    case "blue": c2 = "green";cambSrc = "imgs/cambiador2_B.png"; img2 = "imgs/acelerador.png";break;
+                    case "cyan": c2 = "blue";cambSrc = "imgs/cambiador2_D.png"; img2 = "imgs/nadador.png";break;
+                    case "purple": c2 = "cyan";cambSrc = "imgs/cambiador2.png"; img2 = "imgs/bloqueCamb.png" ;break;
                 }
                 if (this.color == "blue" ){disparo = false;}
                 break;
@@ -178,18 +181,20 @@ function elemento(ancho, alto, x, y, saltar, tipo, subTipo, gravedad, friccion, 
                     this.saltar = true;
                     break;
                     case "purple":
+                    this.velx -= 1;
+                    break;
+                    case "green":
                     this.velx += 1;
                     break;
                 }
                 break;
             case 4:
-                superficie.xd = -superficie.xd;
-                
+                superficie.xd = -superficie.xd; 
                 switch(this.subTipo){
                     case "jugador":
                         this.rebotar(superficie, lado,this);
                         proyectiles=0;
-                        fragmentos =200;
+                        fragmentos =0;
                         this.conteo--;
                 }
                 

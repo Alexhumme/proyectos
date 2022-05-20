@@ -14,7 +14,8 @@ var retraso = 0;
 var c0 = "#0B173B";
 var c1 = "cyan";
 var c2 = "cyan";
-var img2 = "imgs/bloque1_2.png"
+var cambSrc = "imgs/cambiador2.png"
+var img2 = "imgs/bloqueCamb.png"
 
 function generarEscenario(capa, tipo, ancho, alto, lista)
 {	
@@ -42,7 +43,7 @@ function generarEscenario(capa, tipo, ancho, alto, lista)
 	}
 	xb = 0;
 	yb = 0;
-    for (bloque of lista){
-        bloque.dibujar();
+    for (elementoX of lista){
+        elementoX.dibujar();
     }
 }
