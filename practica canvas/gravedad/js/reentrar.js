@@ -6,7 +6,7 @@ function reentrar(elemento){
     if (elemento.x - elemento.ancho < bloques[0].x){
         elemento.x = juegoCanva.canva.width-30;
     }
-    if (elemento.x + elemento.ancho > bloques[52].x+bloques[52].ancho){
+    if (elemento.x + elemento.ancho > bloques[53].x+bloques[53].ancho){
         elemento.x = 30;
         limx = elemento.velx;
     }
@@ -14,7 +14,7 @@ function reentrar(elemento){
         elemento.y = juegoCanva.canva.height-30;
     }
     if (elemento.y + elemento.alto > juegoCanva.canva.height){
-        elemento.y = 30;
+        elemento.y = juegoCanva.canva.height-30;
         limy  = elemento.velGravedad;
     }
 }

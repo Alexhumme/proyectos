@@ -1,11 +1,11 @@
 var elementoC, cursor, luz;
 var bloques = [];var especiales = [];
 var parar; 
-var fps = 0, segundo = 0, conteoFrames = 0, fragmentos = 0;
+var fps = 0, segundo = 0, conteoFrames = 0, fragmentos = 600;
 
 function iniciarJuegoC(){
     luz = new elemento(10, 10, 20, 2, false, "luzBar","", 0.5, 0.5, 0.2, 40, "cyan");
-    elementoC = new elemento(7.5,7.5, 38, 210, false, "personaje","jugador", 0.5, 0.2, 0.2, 40, "yellow");
+    elementoC = new elemento(7.5,7.5, 53, 210, false, "personaje","jugador", 0.5, 0.2, 0.2, 40, "yellow");
     cursor = new elemento(15,15,0,0,false,"cursor","",0,0,0,0,"");
     proX=elementoC.x; proY=elementoC.y;
     juegoCanva.iniciarArea(); 
@@ -70,8 +70,8 @@ function acelerarY(n){
 }
 function actCoordenadas(){
     if (juegoCanva.teclas){
-        if (juegoCanva.teclas[65]){acelerarX(-0.1); retraso+=elementoC.velx}
-        if (juegoCanva.teclas[68]){acelerarX(0.1); retraso+=elementoC.velx}
+        if (juegoCanva.teclas[65]){/*acelerarX(-0.1); if (elementoC.velx < -0.1){*/retraso+=-2}//}
+        if (juegoCanva.teclas[68]){/*acelerarX(0.1); if (elementoC.velx >0.1){*/retraso+=2}//}
         if (juegoCanva.teclas[87]){acelerarY(-0.8); elementoC.saltar = false;}
         if (juegoCanva.teclas[66]){elementoC.alto = 10;}
     }
@@ -107,7 +107,7 @@ function actualizarJuegoC(){
     juegoCanva.limpiar();
     actCoordenadas();
     generarEscenario(nivel,"bloque",14,14,bloques);
-    reducirFragmentos();
+    //reducirFragmentos();
     moverEnemigos();
     cursor.dibujar();
     consultarFrames();
