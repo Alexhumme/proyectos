@@ -111,7 +111,7 @@ function elemento(ancho, alto, x, y, saltar, tipo, subTipo, gravedad, friccion, 
     this.mover = function(){
         this.angulo += (this.velx*Math.PI/180)*2;
         if (this.velGravedad + this.gravedad < 10){this.velGravedad += this.gravedad;}
-        this.x += this.velx;
+        //this.x += this.velx;
         this.y += this.vely + this.velGravedad;
         // frenar
         if(parar){this.velx -= this.velx*this.friccion}

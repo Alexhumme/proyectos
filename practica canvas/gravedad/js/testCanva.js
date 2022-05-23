@@ -51,7 +51,7 @@ var juegoCanva = {
 }
 
 function acelerarX(n){
-    if (elementoC.velx + n <= 2 && elementoC.velx + n >= -2){elementoC.velx += n;}
+    if (elementoC.velx + n <= 4 && elementoC.velx + n >= -4){elementoC.velx += n;}
     if (n>0 && elementoC.saltar){jugadorIMG=jugadorIMGs[3];}
     if (n<0 && elementoC.saltar){jugadorIMG=jugadorIMGs[2];}
 }
@@ -70,8 +70,8 @@ function acelerarY(n){
 }
 function actCoordenadas(){
     if (juegoCanva.teclas){
-        if (juegoCanva.teclas[65]){/*acelerarX(-0.1); if (elementoC.velx < -0.1){*/retraso+=-2}//}
-        if (juegoCanva.teclas[68]){/*acelerarX(0.1); if (elementoC.velx >0.1){*/retraso+=2}//}
+        if (juegoCanva.teclas[65]){acelerarX(-0.1); if (elementoC.velx < -0.09){retraso+=elementoC.velx}}
+        if (juegoCanva.teclas[68]){acelerarX(0.1); if (elementoC.velx >0.09){retraso+=elementoC.velx}}
         if (juegoCanva.teclas[87]){acelerarY(-0.8); elementoC.saltar = false;}
         if (juegoCanva.teclas[66]){elementoC.alto = 10;}
     }
