@@ -100,7 +100,7 @@ function consultarFrames(){
     juegoCanva.ctx.font = "bold 6pt sans-serif";
     juegoCanva.ctx.fillStyle = "red";
     juegoCanva.ctx.textAlign = "center"
-    juegoCanva.ctx.fillText("FPS: "+ fps + " || limite X: "+ limx + " || limite Y: " + limy, juegoCanva.canva.width/2, 10)
+    juegoCanva.ctx.fillText("FPS: "+ fps + " || vel X: "+ elementoC.velx + " || vel Y: " + limy, juegoCanva.canva.width/2, 10)
 }
 
 function actualizarJuegoC(){
@@ -110,10 +110,10 @@ function actualizarJuegoC(){
     //reducirFragmentos();
     moverEnemigos();
     cursor.dibujar();
+    luz.ancho = fragmentos;
+    luz.dibujar();
     consultarFrames();
     dibujarProjectiles();
     elementoC.mover();
     elementoC.dibujar();
-    luz.ancho = fragmentos;
-    luz.dibujar();
 }
